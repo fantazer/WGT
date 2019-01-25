@@ -1,0 +1,60 @@
+mixin wgt()
+	//корзина
+	script(type="text/html" id="top-cart-header-template")
+		<% if(totalItems){ %>
+		span.jstore-js-cart-total-value
+			<%= totalCost %></span> Р (<span class="jstore-js-cart-total-count"><%= totalItems %></span>ШТ.)
+		<% } else { %>
+		| Корзина
+		<% } %>
+
+	//корзина в fix
+	script(type="text/html" id="top-cart-header-template-cart")
+		<% if(totalItems > 0){ %>
+			span.jstore-js-cart-total-value
+				<%= totalCost%>
+			|  р
+		<% } %>
+
+
+	//карточка товара
+	script(type="text/html" id="lsp-template-menu-item")
+		.item
+			a(href!='<%= url %>', data-target='product', onclick="prevpage = 'popup';  console.g('popup');")
+				<% if(tags.length){ %>
+					.jstore-tag.lsp-block-item-tags
+						<% _.each(tags, function(tag){ %>
+							span.jstore-tag.lsp-block-item-tag(data-id='<%= tag.translitName %>', class!='<%= tag.className %>', title!='<%= tag.name %>')
+						<% }); %>
+				<% } %>
+				<% if(largeImageUrl){ %>
+					.item__img(style!="background-image:url(<%=largeImageUrl %>)")
+				<% }else{ %>
+					.item__img.item__img--empty(style="background-image:url('/img/item-empty.svg')")
+				<% } %>
+			.item-cont
+				.item-info
+					.item-descr
+						.item-descr__el
+							span(data-jstore-value="weight") <%= weight*1000 %>
+							span  гр.
+						.item-descr__el
+							span(data-jstore-value="energyAmount") <%= energyAmount %>
+							span  ккал
+					a.item-title(href!='<%= url %>', onclick="prevpage = 'popup';console.log('popup');") <%= name %>
+					.item-description
+						<%= description %>
+					.item-param.lsp-js-typeModifiers-block
+						.lsp-modifier-group.lsp-js-types-container
+				.item-footer
+					.item-footer__price
+						span
+							span.jstore-tag.lsp-block-item-price-value(data-jstore-value="cost")
+								<%= cost %>
+							|  Р
+					.item-footer__get
+						.item-footer__get-btn.lsp-popup-item-tocart-button.lsp-button.jstore-js-put-to-cart(href='#') В корзину
+						.item-count.jstore-tag.select-plus-minus
+							input(type="button"  value="-" class="jstore-tag lsp-button-minus jstore-js-amountMinus item-count__el item-count__el--minus")
+							input(type="text" data-jstore-value="cartCount" class="item-count-val jstore-tag")
+							input(type="button"  value="+" class="jstore-tag lsp-button-plus jstore-js-amountPlus item-count__el item-count__el--plus")

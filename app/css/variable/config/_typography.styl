@@ -1,0 +1,90 @@
+//  ============================ Typography ============================
+
+//webfont('RUB', 'rouble-webfont', 'normal')
+//Add fotn rub write .rub a - (a,b,c,d - change type font)
+
+$v-font =  'Roboto', sans-serif
+
+typeSize(fontSm,font)
+	+below(768px)
+		font-size font px
+	font-size fontSm px
+
+.type--xs
+	typeSize(12,8)
+
+.type--sm
+	typeSize(12,10)
+
+.type--main
+	typeSize(14,12)
+
+.type--md
+	typeSize(16,14)
+
+.type--lg
+	typeSize(20,18)
+	font-family "Museo Sans Cyrl"
+	font-weight: 700
+
+.type--lgx
+	typeSize(24,20)
+	font-family "Museo Sans Cyrl"
+	font-weight: 700
+
+.type--xl
+	typeSize(48,32)
+	font-family "Museo Sans Cyrl"
+	font-weight: 700
+
+.type--xxl
+	typeSize(64,40)
+	font-family "Museo Sans Cyrl"
+	font-weight: 700
+
+
+.type--bold
+	font-weight bold
+
+h1
+	@extend .type--xxl
+h2
+	@extend .type--xl
+h3
+	@extend .type--lgx
+h4
+	@extend .type--lg
+h5
+	@extend .type--md
+
+a
+	color $link-color
+	text-decoration: none
+	&:hover
+		color darken($link-color,20)
+	&:visiter
+		color darken($link-color,30)
+
+p
+	@extend .type--main
+
+.link--mark
+	color $blue
+	&:hover
+		color darken($mark,20)
+	&:visiter
+		color darken($mark,30)
+
+.link--main
+	color $link-color
+	hover-underline($link-color)
+	&:hover
+		color darken($link-color,20)
+	&:visiter
+		color darken($link-color,30)
+
+.link--text
+	color $link-color
+	text-decoration underline
+	&:hover
+		text-decoration none

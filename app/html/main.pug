@@ -1,0 +1,32 @@
+include block_html/_style.pug
+include block_html/_include.pug
+
++header()
+
+.loader
+	img(src="img/loader.svg", alt="")
+
+.main-slider-wrap
+	.slider-wrap
+		.slider-control.slider-control--left
+			+icon("conner-arrow-left","icon")
+		.slider-control.slider-control--right
+			+icon("conner-arrow-right","icon")
+		.main-slider.slider-item
+			.main-slider__el(style="background-image:url('img/slider.jpg')")
+			.main-slider__el(style="background-image:url('img/slider.jpg')")
+			.main-slider__el(style="background-image:url('img/slider.jpg')")
+
+.page
+	.main-cont
+		//toggle class .items--three .items--four .items--five
+		.items--four
+			#jstore-css
+				#lsp-block-content.lsp-block-content
+
+				//#lsp-block-tree.lsp-block-menu-tree
+
++footer()
++wgt()
+
+include ./block_html/_script.pug

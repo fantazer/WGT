@@ -1,0 +1,56 @@
+mixin header()
+	//block header
+	.header
+		.header-top-wrap
+			.main-cont
+				.header-top
+					.town-list Санкт-Петербург
+					.header-top-menu
+						-
+							var items = [
+								'Доставка и оплата',
+								'Новости',
+								'Вакансии',
+								'О нас',
+								'Франшиза',
+								'Контакты'
+								];
+						each item in items
+							a(href="#").header-top-menu__el #{item}
+					.header-top-soc
+						.soc-row
+							-
+								var items = ['soc-fb','soc-twt','soc-inst','soc-tube'];
+							each item in items
+								a(href="#").soc-row__el
+									+icon(item,"icon")
+		.main-cont
+			.header-info
+				a(href="#").header-logo
+					img(src="img/logo.svg", alt="")
+				.header-search
+					form(action="#").header-search__form
+						input(type="text" placeholder="Поиск" class="input")
+						.header-search__icon
+							+icon("search","icon")
+				.header-contact
+					a(href="tel:8 800 5353 555").header-contacr__phone 8 800 5353 555
+					.header-contacr__time Работаем с 9:00 до 23:00
+				.header-auth
+					a(href="#!/personal").header-auth__enter
+						span.user войти
+					.cart.lsp-block-cart(data-template="top-cart-header-template")
+						.cart__icon
+						span корзина
+			.header-menu-wrap
+				.main-cont
+					.header-menu
+						a(href="/").header-menu__logo
+							img(src="img/logo--small.svg", alt="")
+						#lsp-block-tree.lsp-block-menu-tree
+						.header-menu__basket
+							.header-menu__basket-icon
+								+icon("cart","icon")
+							.header-menu__basket-val.lsp-block-cart(data-template="top-cart-header-template-cart")
+
+	//block header end
