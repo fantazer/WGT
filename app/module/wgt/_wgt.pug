@@ -20,7 +20,7 @@ mixin wgt()
 	//карточка товара
 	script(type="text/html" id="lsp-template-menu-item")
 		.item
-			a(href!='<%= url %>', data-target='product', onclick="prevpage = 'popup';  console.g('popup');")
+			a(href!='<%= url %>', data-target='product', onclick="prevpage = 'popup';  console.log('popup');")
 				<% if(tags.length){ %>
 					.jstore-tag.lsp-block-item-tags
 						<% _.each(tags, function(tag){ %>
@@ -58,3 +58,85 @@ mixin wgt()
 							input(type="button"  value="-" class="jstore-tag lsp-button-minus jstore-js-amountMinus item-count__el item-count__el--minus")
 							input(type="text" data-jstore-value="cartCount" class="item-count-val jstore-tag")
 							input(type="button"  value="+" class="jstore-tag lsp-button-plus jstore-js-amountPlus item-count__el item-count__el--plus")
+
+	//note
+	script(type="text/html" id="order-cart-item-template")
+		.img
+			.img-wrap(style='background: url(<%= smallImageUrl %>) center / cover no-repeat;')
+		.desc
+			p.name <%= name %>
+			span.price <%= price %> Р.
+			|  /
+			span.weight 0 г.
+		.count
+			input.lsp-button-minus.lsp-button-minus.lsp-js-item-minus.minus(type='button', value='-')
+			input.jstore-tag.lsp-block-cart-item-amount-c-count(name='count', value='<%= amount %>')
+			input.lsp-button-plus.lsp-js-item-plus.plus(type='button', value='+')
+
+	//карточка товара подробная
+	script(type="text/html" id="custom-popup")
+		.card-img.jstore-tag(style!="background-image:url(<%=largeImageUrl %>)")
+		.card-descr
+			.card-title(data-jstore-value='name')
+			.card-text(data-jstore-value='description')
+			.card-modificators
+				.jstore-tag.lsp-js-typeModifiers-block
+					.jstore-tag.lsp-modifier-group.lsp-js-types-container
+			.jstore-tag.lsp-popup-energy-cont(data-jstore-if='fiberAmount || fatAmount || carbohydrateAmount || carbohydrateAmount || energyAmount || weight')
+				//.jstore-tag.lsp-popup-energy-title <%= jStoreApp.t('energy_sum') %>:
+				.card-compound
+					//Белки
+					.book-row(data-jstore-if='fiberAmount')
+						.book-row__title <%= jStoreApp.t('Proteins')%>
+						.book-row__dot
+						.book-row__value
+							span.lsp-js-item-fiberAmount-value <%= fiberAmount*1000%>
+							span.item-card-weight <%= jStoreApp.t('Gram')%>
+
+					//Жиры
+					.book-row(data-jstore-if='fatAmount')
+						.book-row__title <%= jStoreApp.t('Fats')%>
+						.book-row__dot
+						.book-row__value
+							span.lsp-js-item-fatAmount-value <%= fatAmount*1000%>
+							span.item-card-weight <%= jStoreApp.t('Gram')%>
+
+					//Углеводы
+					.book-row(data-jstore-if='carbohydrateAmount')
+						.book-row__title <%= jStoreApp.t('Carbohydrates')%>
+						.book-row__dot
+						.book-row__value
+							span.lsp-js-item-carbohydrateAmount-value <%= carbohydrateAmount*1000%>
+							span.item-card-weight <%= jStoreApp.t('Gram')%>
+
+					// Энергетическая ценность
+					.book-row(data-jstore-if='energyAmount')
+						.book-row__title <%= jStoreApp.t('Nutritional_value')%>
+						.book-row__dot
+						.book-row__value
+							span.lsp-js-item-energyAmount-value <%= energyAmount%>
+							span.item-card-weight <%= jStoreApp.t('CCal')%>
+
+					//Вес
+					.book-row(data-jstore-if='weight')
+						.book-row__title <%= jStoreApp.t('Weight')%>
+						.book-row__dot
+						.book-row__value
+							span.lsp-js-item-energyAmount-value <%= weight*1000 %>
+							span.item-card-weight г.
+
+
+			.card-order
+				.card-price
+					span.lsp-block-item-price-value(data-jstore-value='cost')
+					|  P
+				.card-count
+					input.jstore-tag.minus.lsp-button-minus.lsp-js-popup-item-minus.item-count__el.item-count__el--minus(type='button', value='-')
+					input.jstore-tag.lsp-block-cart-item-amount-c-count.item-count-val(name='count', data-jstore-value='cartCount')
+					input.jstore-tag.plus.lsp-button-plus.lsp-js-popup-item-plus.item-count__el.item-count__el--plus(type='button', value='+', title='')
+				a.btn.lsp-popup-item-tocart-button.lsp-js-popup-tocart.card-get(href='#') В корзину
+
+			.card-modifiers
+				.jstore-tag.lsp-modifiers-container.lsp-js-modifiers-block
+					.jstore-tag.lsp-modifier-group.lsp-js-modifiers-container
+
