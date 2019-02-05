@@ -39,18 +39,21 @@ mixin header()
 				.header-auth
 					a(href="#!/personal").header-auth__enter
 						span.user войти
-					.cart.lsp-block-cart(data-template="top-cart-header-template")
-						.cart__icon
-						span корзина
+					.cart-wrap
+						.cart.lsp-block-cart(data-template="top-cart-header-template" onclick="$('body').addClass('cart-open');$('.modal-layer').addClass('modal-layer-show');")
+							.cart__icon
+							span корзина
+							.cart-inner
+								.cart-list Ваша корзина пуста
 			.header-menu-wrap
 				.main-cont
 					.header-menu
 						a(href="/").header-menu__logo
 							img(src="img/logo--small.svg", alt="")
 						#lsp-block-tree.lsp-block-menu-tree
-						.header-menu__basket
+						.header-menu__basket(data-template="top-cart-header-template" onclick="$('body').addClass('cart-open');$('.modal-layer').addClass('modal-layer-show');")
 							.header-menu__basket-icon
-								+icon("cart","icon")
+								+icon("cart","icon icon-cart")
 							.header-menu__basket-val.lsp-block-cart(data-template="top-cart-header-template-cart")
 
 	//block header end

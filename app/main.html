@@ -91,9 +91,14 @@
                     <a class="header-auth__enter" href="#!/personal">
                         <span class="user">войти</span>
                     </a>
-                    <div class="cart lsp-block-cart" data-template="top-cart-header-template">
-                        <div class="cart__icon"></div>
-                        <span>корзина</span>
+                    <div class="cart-wrap">
+                        <div class="cart lsp-block-cart" data-template="top-cart-header-template" onclick="$('body').addClass('cart-open');$('.modal-layer').addClass('modal-layer-show');">
+                            <div class="cart__icon"></div>
+                            <span>корзина</span>
+                            <div class="cart-inner">
+                                <div class="cart-list">Ваша корзина пуста</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,9 +109,9 @@
                             <img src="img/logo--small.svg" alt="" />
                         </a>
                         <div class="lsp-block-menu-tree" id="lsp-block-tree"></div>
-                        <div class="header-menu__basket">
+                        <div class="header-menu__basket" data-template="top-cart-header-template" onclick="$('body').addClass('cart-open');$('.modal-layer').addClass('modal-layer-show');">
                             <div class="header-menu__basket-icon">
-                                <svg class="icon">
+                                <svg class="icon icon-cart">
                                     <use xlink:href="#cart"></use>
                                 </svg>
                             </div>
@@ -307,10 +312,57 @@
     <!--корзина-->
     <script type="text/html" id="top-cart-header-template">
         <% if(totalItems){ %><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р (<span class="jstore-js-cart-total-count"><%= totalItems %></span>ШТ.)</span><% } else { %>Корзина<% } %>
+        	<div class="cart-inner"><a class="close-cart" href="#" onclick="$('body').toggleClass('cart-open');"></a><% if(totalItems){ %>
+        		<div class="cart-list lsp-cart-items-list" data-template="top-cart-item-template"></div>
+        		<div class="cart-summary">
+        			<div class="cart-total"><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р.</div><% if(totalCost>=495){ %><a class="cart-get" href="#!/order">Оформить</a><% }else{ %><a class="cart-get cart-get--empty" href="/">Оформить</a><% } %>
+        		</div>
+        		<div class="cart-min">Минимальная сумма заказа - 495руб.</div><% } else { %>
+        		<div class="cart-empty">
+        			<div class="cart-empty__icon">
+        				<svg class="icon">
+        					<use xlink:href="#cart--color"></use>
+        				</svg>
+        			</div>
+        			<div class="cart-empty__text">Пока пусто</div>
+        		</div><% } %>
+        	</div>
+    </script>
+    <!--корзина елемент списка-->
+    <script type="text/html" id="top-cart-item-template">
+        <div class="cart-item">
+        		<div class="cart-item__info">
+        			<div class="cart-item__img" style="background-image:url(<%= smallImageUrl %>)"></div>
+        			<div class="cart-item__name"><span><%= name %></span><span class="cart-item__name--add"><%= typesTail %></span></div>
+        		</div>
+        		<div class="cart-item__footer">
+        			<div class="cart-item__incr">
+        				<input class="lsp-button-minus lsp-button-minus lsp-js-item-minus minus" type="button" value="-" onclick="change_count();"/>
+        				<input class="cart-item__incr-total lsp-block-cart-item-amount-c-count" name="count" value="&lt;%= amount %&gt;"/>
+        				<input class="lsp-button-plus lsp-js-item-plus plus" type="button" value="+" onclick="change_count();"/>
+        			</div>
+        			<div class="cart-item__price"><%= price %> Р.</div>
+        		</div>
+        	</div>
     </script>
     <!--корзина в fix-->
     <script type="text/html" id="top-cart-header-template-cart">
         <% if(totalItems > 0){ %><span class="jstore-js-cart-total-value"><%= totalCost%></span> р<% } %>
+        	<div class="cart-inner"><a class="close-cart" href="#" onclick="$('body').toggleClass('cart-open');"></a><% if(totalItems){ %>
+        		<div class="cart-list lsp-cart-items-list" data-template="top-cart-item-template"></div>
+        		<div class="cart-summary">
+        			<div class="cart-total"><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р.</div><% if(totalCost>=495){ %><a class="cart-get" href="#!/order">Оформить</a><% }else{ %><a class="cart-get cart-get--empty" href="/">Оформить</a><% } %>
+        		</div>
+        		<div class="cart-min">Минимальная сумма заказа - 495руб.</div><% } else { %>
+        		<div class="cart-empty">
+        			<div class="cart-empty__icon">
+        				<svg class="icon">
+        					<use xlink:href="#cart--color"></use>
+        				</svg>
+        			</div>
+        			<div class="cart-empty__text">Пока пусто</div>
+        		</div><% } %>
+        	</div>
     </script>
     <!--карточка товара-->
     <script type="text/html" id="lsp-template-menu-item">
@@ -342,20 +394,6 @@
         				</div>
         			</div>
         		</div>
-        	</div>
-    </script>
-    <!--note-->
-    <script type="text/html" id="order-cart-item-template">
-        <div class="img">
-        		<div class="img-wrap" style="background: url(&lt;%= smallImageUrl %&gt;) center / cover no-repeat;"></div>
-        	</div>
-        	<div class="desc">
-        		<p class="name"><%= name %></p><span class="price"><%= price %> Р.</span> /<span class="weight">0 г.</span>
-        	</div>
-        	<div class="count">
-        		<input class="lsp-button-minus lsp-button-minus lsp-js-item-minus minus" type="button" value="-"/>
-        		<input class="jstore-tag lsp-block-cart-item-amount-c-count" name="count" value="&lt;%= amount %&gt;"/>
-        		<input class="lsp-button-plus lsp-js-item-plus plus" type="button" value="+"/>
         	</div>
     </script>
     <!--карточка товара подробная-->
@@ -400,7 +438,7 @@
         				<div class="book-row" data-jstore-if="weight">
         					<div class="book-row__title"><%= jStoreApp.t('Weight')%></div>
         					<div class="book-row__dot"></div>
-        					<div class="book-row__value"><span class="lsp-js-item-energyAmount-value"><%= weight*1000 %></span><span class="item-card-weight">г.</span></div>
+        					<div class="book-row__value"><span class="jstore-tag lsp-popup-table-property-value lsp-js-item-weight-value" data-jstore-value="weight"></span><span class="item-card-weight">г.</span></div>
         				</div>
         			</div>
         		</div>

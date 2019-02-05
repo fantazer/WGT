@@ -7,6 +7,43 @@ mixin wgt()
 		<% } else { %>
 		| Корзина
 		<% } %>
+		.cart-inner
+			a.close-cart(href='#', onclick="$('body').toggleClass('cart-open');")
+			<% if(totalItems){ %>
+			.cart-list.lsp-cart-items-list(data-template='top-cart-item-template')
+			.cart-summary
+				.cart-total
+					span.jstore-js-cart-total-value <%= totalCost %>
+					|  Р.
+				<% if(totalCost>=495){ %>
+					a(href='#!/order').cart-get Оформить
+				<% }else{ %>
+					a(href='/').cart-get.cart-get--empty Оформить
+				<% } %>
+			.cart-min Минимальная сумма заказа - 495руб.
+			<% } else { %>
+				.cart-empty
+					.cart-empty__icon
+						+icon("cart--color","icon")
+					.cart-empty__text Пока пусто
+			<% } %>
+
+
+	//корзина елемент списка
+	script(type="text/html" id="top-cart-item-template")
+		.cart-item
+			.cart-item__info
+				.cart-item__img(style!="background-image:url(<%= smallImageUrl %>)")
+				.cart-item__name
+					span <%= name %>
+					span.cart-item__name--add <%= typesTail %>
+			.cart-item__footer
+				.cart-item__incr
+					input.lsp-button-minus.lsp-button-minus.lsp-js-item-minus.minus(type='button', value='-', onclick='change_count();')
+					input.cart-item__incr-total.lsp-block-cart-item-amount-c-count(name='count', value='<%= amount %>')
+					input.lsp-button-plus.lsp-js-item-plus.plus(type='button', value='+', onclick='change_count();')
+
+				.cart-item__price <%= price %> Р.
 
 	//корзина в fix
 	script(type="text/html" id="top-cart-header-template-cart")
@@ -15,7 +52,26 @@ mixin wgt()
 				<%= totalCost%>
 			|  р
 		<% } %>
-
+		.cart-inner
+			a.close-cart(href='#', onclick="$('body').toggleClass('cart-open');")
+			<% if(totalItems){ %>
+			.cart-list.lsp-cart-items-list(data-template='top-cart-item-template')
+			.cart-summary
+				.cart-total
+					span.jstore-js-cart-total-value <%= totalCost %>
+					|  Р.
+				<% if(totalCost>=495){ %>
+				a(href='#!/order' ).cart-get Оформить
+				<% }else{ %>
+				a(href='/').cart-get.cart-get--empty Оформить
+				<% } %>
+			.cart-min Минимальная сумма заказа - 495руб.
+			<% } else { %>
+			.cart-empty
+				.cart-empty__icon
+					+icon("cart--color","icon")
+				.cart-empty__text Пока пусто
+			<% } %>
 
 	//карточка товара
 	script(type="text/html" id="lsp-template-menu-item")
@@ -59,19 +115,6 @@ mixin wgt()
 							input(type="text" data-jstore-value="cartCount" class="item-count-val jstore-tag")
 							input(type="button"  value="+" class="jstore-tag lsp-button-plus jstore-js-amountPlus item-count__el item-count__el--plus")
 
-	//note
-	script(type="text/html" id="order-cart-item-template")
-		.img
-			.img-wrap(style='background: url(<%= smallImageUrl %>) center / cover no-repeat;')
-		.desc
-			p.name <%= name %>
-			span.price <%= price %> Р.
-			|  /
-			span.weight 0 г.
-		.count
-			input.lsp-button-minus.lsp-button-minus.lsp-js-item-minus.minus(type='button', value='-')
-			input.jstore-tag.lsp-block-cart-item-amount-c-count(name='count', value='<%= amount %>')
-			input.lsp-button-plus.lsp-js-item-plus.plus(type='button', value='+')
 
 	//карточка товара подробная
 	script(type="text/html" id="custom-popup")
@@ -122,7 +165,8 @@ mixin wgt()
 						.book-row__title <%= jStoreApp.t('Weight')%>
 						.book-row__dot
 						.book-row__value
-							span.lsp-js-item-energyAmount-value <%= weight*1000 %>
+							span.jstore-tag.lsp-popup-table-property-value.lsp-js-item-weight-value(data-jstore-value="weight"
+							)
 							span.item-card-weight г.
 
 

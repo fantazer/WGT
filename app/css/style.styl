@@ -95,6 +95,7 @@ body
 	@extend .btn--mark
 	width: 150px
 	padding: 20px 10px
+	position: relative
 //.cart__icon
 
 //for custom navigation
@@ -133,6 +134,9 @@ body
 .page
 	padding: 60px 0 100px 0
 	background: #f6f6fa
+.page--white
+	background: white
+	border-top 1px solid $border-color
 .item
 	br(10px)
 	f()
@@ -293,8 +297,7 @@ input.item-count__el
 	margin-left: 25px
 	position: relative
 	cp()
-
-	.icon
+	.icon-cart
 		size 20px
 		fill white
 .header-menu__basket-val
@@ -322,6 +325,7 @@ input.item-count__el
 	margin 0
 	animation:  slideInDown  1s 1 ease-in-out;
 	z-index 20
+	border-bottom 1px solid $border-color
 	.header-menu__logo
 		flex(mid)
 	.header-menu__basket
@@ -605,7 +609,7 @@ input.item-count__el
 .body--fix
 	overflow hidden
 	overflowY hidden
-
+	height: 100%
 //.item-footer__get--active
 
 .card-img
@@ -652,3 +656,10 @@ input.item-count__el
 	@extend .btn--md
 	@extend .btn--mark
 	color white!important
+
+
+
+.cart-wrap
+	position: relative
+
+
