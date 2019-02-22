@@ -1,0 +1,33 @@
+include block_html/_style.pug
+include block_html/_include.pug
+
++header()
+
+.loader
+	img(src="img/loader.svg", alt="")
+
+.page
+	.main-cont
+		.bread
+			-
+				var items = ['Главная','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей'];
+			each item in items
+				a(href="#").bread__el #{item}
+		.section-title Блог
+		.blog
+			.blog-banner(style="background-image:url('img/blog-banner.jpg')")
+				.filter
+				.blog-banner__content
+					.blog-banner__title JStore на свадебной выставочной  Wedding zavod
+			- for (var i=0;i<8;i++)
+				.blog-el
+					.blog-el__img(style="background-image:url('img/blog-el.jpg')")
+					.blog-el__content
+						.blog-el__date 28 сентября 2018
+						.blog-el__title Традиции пиццы
+						.blog-el__text История появления пиццы уходит корнями в глубь тысячелетий и является почти такой же древней, как вся история человечества
+
++footer()
++wgt()
+
+include ./block_html/_script.pug

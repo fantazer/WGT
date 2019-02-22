@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+<!--create by ANATOLY KUZNETSOV-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <!--colors-tabs-->
+    <meta name="theme-color" content="#000" />
+    <meta name="msapplication-navbutton-color" content="#000" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000" />
+    <!--SEO-->
+    <title>Document</title>
+    <meta name="description" itemprop="description" content="" />
+    <!--build:css css/vendor.css-->
+    <link rel="stylesheet" href="bower/normalize.css/normalize.css" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="bower/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" href="bower/slick-carousel/slick/slick-theme.css" />
+    <link rel="stylesheet" href="bower/jquery-nice-select/css/nice-select.css" />
+    <!--endbuild-->
+    <!--link(rel="stylesheet", href="//deliveryWiget.iiko.ru/v2_0/assets/css/style.css" )-->
+    <script src="js/config.js"></script>
+    <script data-main="//deliveryWiget.iiko.ru/v2_0/app/config" src="//deliveryWiget.iiko.ru/v2_0/libs/require.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-edit.css" />
+</head>
+
+<body>
+    <!--block header-->
+    <div class="header">
+        <div class="header-top-wrap">
+            <div class="main-cont">
+                <div class="header-top">
+                    <div class="town-list">Санкт-Петербург</div>
+                    <div class="header-top-menu">
+                        <a class="header-top-menu__el" href="#">Доставка и оплата</a>
+                        <a class="header-top-menu__el" href="#">Новости</a>
+                        <a class="header-top-menu__el" href="#">Вакансии</a>
+                        <a class="header-top-menu__el" href="#">О нас</a>
+                        <a class="header-top-menu__el" href="#">Франшиза</a>
+                        <a class="header-top-menu__el" href="#">Контакты</a>
+                    </div>
+                    <div class="header-top-soc">
+                        <div class="soc-row">
+                            <a class="soc-row__el" href="#">
+                                <svg class="icon">
+                                    <use xlink:href="#soc-fb"></use>
+                                </svg>
+                            </a>
+                            <a class="soc-row__el" href="#">
+                                <svg class="icon">
+                                    <use xlink:href="#soc-twt"></use>
+                                </svg>
+                            </a>
+                            <a class="soc-row__el" href="#">
+                                <svg class="icon">
+                                    <use xlink:href="#soc-inst"></use>
+                                </svg>
+                            </a>
+                            <a class="soc-row__el" href="#">
+                                <svg class="icon">
+                                    <use xlink:href="#soc-tube"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-cont">
+            <div class="header-info">
+                <a class="header-logo" href="#">
+                    <img src="img/logo.svg" alt="" />
+                </a>
+                <div class="header-search">
+                    <form class="header-search__form" action="#">
+                        <input class="input" type="text" placeholder="Поиск" />
+                        <div class="header-search__icon">
+                            <svg class="icon">
+                                <use xlink:href="#search"></use>
+                            </svg>
+                        </div>
+                    </form>
+                </div>
+                <div class="header-contact">
+                    <a class="header-contacr__phone" href="tel:8 800 5353 555">8 800 5353 555</a>
+                    <div class="header-contacr__time">Работаем с 9:00 до 23:00</div>
+                </div>
+                <div class="header-auth">
+                    <a class="header-auth__enter" href="#!/personal">
+                        <span class="user">войти</span>
+                    </a>
+                    <div class="cart-wrap">
+                        <div class="cart lsp-block-cart" data-template="top-cart-header-template" onclick="$('body').addClass('cart-open');$('.modal-layer').addClass('modal-layer-show');">
+                            <div class="cart__icon"></div>
+                            <span>корзина</span>
+                            <div class="cart-inner">
+                                <div class="cart-list">Ваша корзина пуста</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-menu-wrap">
+                <div class="main-cont">
+                    <div class="header-menu">
+                        <div class="head-toggle">
+                            <svg class="icon icon-open">
+                                <use xlink:href="#menu"></use>
+                            </svg>
+                            <svg class="icon icon-close">
+                                <use xlink:href="#close"></use>
+                            </svg>
+                        </div>
+                        <a class="header-menu__logo--mobile" href="/">
+                            <img src="img/logo-mobile.svg" alt="" />
+                        </a>
+                        <a class="header-menu__logo" href="/">
+                            <img src="img/logo--small.svg" alt="" />
+                        </a>
+                        <div class="lsp-block-menu-tree" id="lsp-block-tree"></div>
+                        <div class="header-menu__basket" data-template="top-cart-header-template" onclick="$('body').addClass('cart-open');$('.modal-layer').addClass('modal-layer-show');">
+                            <div class="header-menu__basket-icon">
+                                <svg class="icon icon-cart">
+                                    <use xlink:href="#cart"></use>
+                                </svg>
+                            </div>
+                            <div class="header-menu__basket-val lsp-block-cart" data-template="top-cart-header-template-cart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-menu">
+                <div class="slide-menu__list">
+                    <div class="slide-menu__title">
+                        <svg class="icon">
+                            <use xlink:href="#dinner"></use>
+                        </svg>
+                        <span>Наше меню</span>
+                        <svg class="icon icon-arrow">
+                            <use xlink:href="#arrow-down"></use>
+                        </svg>
+                    </div>
+                    <div class="lsp-block-menu-tree" id="lsp-block-tree"></div>
+                </div>
+                <div class="slide-menu-cont">
+                    <div class="slide-menu-adv">
+                        <a class="slide-menu-adv__el" href="#">Доставка и оплата</a>
+                        <a class="slide-menu-adv__el" href="#">Новости</a>
+                        <a class="slide-menu-adv__el" href="#">Вакансии</a>
+                        <a class="slide-menu-adv__el" href="#">О нас</a>
+                        <a class="slide-menu-adv__el" href="#">Франшиза</a>
+                        <a class="slide-menu-adv__el" href="#">Контакты</a>
+                    </div>
+                    <div class="slide-menu__auth">
+                        <a class="header-auth__enter" href="#!/personal">
+                            <span class="user">войти</span>
+                        </a>
+                    </div>
+                    <a class="slide-menu__phone" href="tel:8 800 5353 555">8 800 5353 555</a>
+                    <div class="slide-menu__time">Работаем с 9:00 до 23:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--block header end-->
+    <div class="loader">
+        <img src="img/loader.svg" alt="" />
+    </div>
+    <div class="page">
+        <div class="main-cont">
+            <div class="bread">
+                <a class="bread__el" href="#">Главная</a>
+                <a class="bread__el" href="#">Пиццы</a>
+                <a class="bread__el" href="#">Гавайская с курицей</a>
+                <a class="bread__el" href="#">Пиццы</a>
+                <a class="bread__el" href="#">Гавайская с курицей</a>
+                <a class="bread__el" href="#">Пиццы</a>
+                <a class="bread__el" href="#">Гавайская с курицей</a>
+            </div>
+            <div class="section-title">Отзывы</div>
+            <div class="review-wrap">
+                <div class="review">
+                    <div class="review__el">
+                        <div class="review__el-head">
+                            <div class="review__el-name">Анжелика</div>
+                            <div class="review-date">28 Сентября 2018</div>
+                            <div class="star-row">
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el star-row__el--empty">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review__el-title">Роллы были божественны!</div>
+                        <div class="review-text">Ваши воки просто божественны! Много мяса и соуса, свежие овощи. Выглядит всё очень аппетитно. Доставка всегда вовремя, а курьеры вежливы даже в сильный мороз))) спасибо вам за вкусную еду, за своевременную доставку и хорошее настроение
+                            )) вы лучшие!</div>
+                    </div>
+                    <div class="review__el">
+                        <div class="review__el-head">
+                            <div class="review__el-name">Анжелика</div>
+                            <div class="review-date">28 Сентября 2018</div>
+                            <div class="star-row">
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el star-row__el--empty">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review__el-title">Роллы были божественны!</div>
+                        <div class="review-text">Ваши воки просто божественны! Много мяса и соуса, свежие овощи. Выглядит всё очень аппетитно. Доставка всегда вовремя, а курьеры вежливы даже в сильный мороз))) спасибо вам за вкусную еду, за своевременную доставку и хорошее настроение
+                            )) вы лучшие!</div>
+                    </div>
+                    <div class="review__el">
+                        <div class="review__el-head">
+                            <div class="review__el-name">Анжелика</div>
+                            <div class="review-date">28 Сентября 2018</div>
+                            <div class="star-row">
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el star-row__el--empty">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review__el-title">Роллы были божественны!</div>
+                        <div class="review-text">Ваши воки просто божественны! Много мяса и соуса, свежие овощи. Выглядит всё очень аппетитно. Доставка всегда вовремя, а курьеры вежливы даже в сильный мороз))) спасибо вам за вкусную еду, за своевременную доставку и хорошее настроение
+                            )) вы лучшие!</div>
+                    </div>
+                    <div class="review__el">
+                        <div class="review__el-head">
+                            <div class="review__el-name">Анжелика</div>
+                            <div class="review-date">28 Сентября 2018</div>
+                            <div class="star-row">
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el star-row__el--empty">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review__el-title">Роллы были божественны!</div>
+                        <div class="review-text">Ваши воки просто божественны! Много мяса и соуса, свежие овощи. Выглядит всё очень аппетитно. Доставка всегда вовремя, а курьеры вежливы даже в сильный мороз))) спасибо вам за вкусную еду, за своевременную доставку и хорошее настроение
+                            )) вы лучшие!</div>
+                    </div>
+                    <div class="review__el">
+                        <div class="review__el-head">
+                            <div class="review__el-name">Анжелика</div>
+                            <div class="review-date">28 Сентября 2018</div>
+                            <div class="star-row">
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el star-row__el--empty">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review__el-title">Роллы были божественны!</div>
+                        <div class="review-text">Ваши воки просто божественны! Много мяса и соуса, свежие овощи. Выглядит всё очень аппетитно. Доставка всегда вовремя, а курьеры вежливы даже в сильный мороз))) спасибо вам за вкусную еду, за своевременную доставку и хорошее настроение
+                            )) вы лучшие!</div>
+                    </div>
+                    <div class="review__el">
+                        <div class="review__el-head">
+                            <div class="review__el-name">Анжелика</div>
+                            <div class="review-date">28 Сентября 2018</div>
+                            <div class="star-row">
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el star-row__el--empty">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review__el-title">Роллы были божественны!</div>
+                        <div class="review-text">Ваши воки просто божественны! Много мяса и соуса, свежие овощи. Выглядит всё очень аппетитно. Доставка всегда вовремя, а курьеры вежливы даже в сильный мороз))) спасибо вам за вкусную еду, за своевременную доставку и хорошее настроение
+                            )) вы лучшие!</div>
+                    </div>
+                    <div class="review__el">
+                        <div class="review__el-head">
+                            <div class="review__el-name">Анжелика</div>
+                            <div class="review-date">28 Сентября 2018</div>
+                            <div class="star-row">
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                                <div class="star-row__el star-row__el--empty">
+                                    <svg class="icon">
+                                        <use xlink:href="#star"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review__el-title">Роллы были божественны!</div>
+                        <div class="review-text">Ваши воки просто божественны! Много мяса и соуса, свежие овощи. Выглядит всё очень аппетитно. Доставка всегда вовремя, а курьеры вежливы даже в сильный мороз))) спасибо вам за вкусную еду, за своевременную доставку и хорошее настроение
+                            )) вы лучшие!</div>
+                    </div>
+                </div>
+                <div class="review-get-wrap">
+                    <div class="review-get">
+                        <div class="review-get__title">Оставьте отзыв о нашем заведении</div>
+                        <div class="review-get__text">Этим вы поможете
+                            <br>нам стать еще лучше! :)</div>
+                        <a class="review-get__btn" href="#">написать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--block footer-->
+    <div class="footer-wrap">
+        <div class="main-cont">
+            <div class="footer-card">
+                <div class="footer-card__el">
+                    <div class="footer-card__el-title">Бесплатная доставка</div>
+                    <div class="footer-card__el-text">При заказе от 500₽</div>
+                </div>
+                <div class="footer-card__el">
+                    <div class="footer-card__el-title">500 Р</div>
+                    <div class="footer-card__el-text">Минимальаня сумма заказа</div>
+                </div>
+                <div class="footer-card__el">
+                    <div class="footer-card__el-title">7 000 Р</div>
+                    <div class="footer-card__el-text">Максимальная сумма заказа, при оплате наличными</div>
+                </div>
+                <div class="footer-card__el footer-card__el--mark" style="background-image:url('img/map.png')">
+                    <div class="footer-card__el-title">
+                        <span>Зона доставки</span>
+                        <div class="footer-card__el-icon">
+                            <svg class="icon">
+                                <use xlink:href="#pizza"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-info">
+                <div class="footer-info__about">
+                    <div class="footer-logo">
+                        <img src="img/logo.svg" alt="" />
+                    </div>
+                    <div class="footer-copy">Jstore © 2018</div>
+                </div>
+                <div class="footer-menu">
+                    <a class="footer-menu__el" href="#">Новости</a>
+                    <a class="footer-menu__el" href="#">Вакансии</a>
+                    <a class="footer-menu__el" href="#">О нас</a>
+                    <a class="footer-menu__el" href="#">Франшиза</a>
+                    <a class="footer-menu__el" href="#">Контакты</a>
+                </div>
+                <div class="footer-contact footer-contact--mail">
+                    <a class="footer-mail" href="mailto:Manager@Jstore.ru">Manager@Jstore.ru</a>
+                    <div class="soc-row">
+                        <a class="soc-row__el" href="#">
+                            <svg class="icon">
+                                <use xlink:href="#soc-fb"></use>
+                            </svg>
+                        </a>
+                        <a class="soc-row__el" href="#">
+                            <svg class="icon">
+                                <use xlink:href="#soc-twt"></use>
+                            </svg>
+                        </a>
+                        <a class="soc-row__el" href="#">
+                            <svg class="icon">
+                                <use xlink:href="#soc-inst"></use>
+                            </svg>
+                        </a>
+                        <a class="soc-row__el" href="#">
+                            <svg class="icon">
+                                <use xlink:href="#soc-tube"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-contact footer-contact--phone">
+                    <a class="footer-tel" href="tel:8 800 5353 555">8 800 5353 555</a>
+                    <div class="footer-call">Звонок бесплатный</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-wrap">
+            <div class="main-cont">
+                <div class="footer-bottom">
+                    <div class="footer-pay">
+                        <div class="footer-pay__text">Оплата онлайн:</div>
+                        <div class="footer-pay__logo">
+                            <svg class="icon">
+                                <use xlink:href="#viza"></use>
+                            </svg>
+                            <svg class="icon">
+                                <use xlink:href="#mastercard"></use>
+                            </svg>
+                            <svg class="icon">
+                                <use xlink:href="#maestro"></use>
+                            </svg>
+                            <svg class="icon">
+                                <use xlink:href="#paypal"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <a class="footer-politic" href="#">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-layer">
+        <div class="modal-filter"></div>
+        <div class="modal-wrap">
+            <div class="modal" data-modal="order">
+                <div class="modal-content">
+                    <div class="modal-close">
+                        <svg class="icon">
+                            <use xlink:href="#close"></use>
+                        </svg>
+                    </div>
+                    <div class="modal-title">Оставьте заявку</div>
+                    <div class="modal-text">Обращаетесь к нам впервые?
+                        <br>Оформите обращение с помощью этой формы, мы перезвоним Вам и проконсультируем по любому Вашему вопросу совершенно бесплатно!</div>
+                    <form class="validate-form" action="javascript:void(null);">
+                        <div class="input-row">
+                            <input class="input" type="text" name="name" placeholder="Ваше имя" />
+                        </div>
+                        <div class="input-row">
+                            <input class="input" type="text" name="phone" placeholder="Ваш телефон" />
+                        </div>
+                        <div class="input-row">
+                            <textarea class="input" name="info" cols="30" rows="5" placeholder="Сообщение"></textarea>
+                        </div>
+                        <div class="agree-row">
+                            <div class="check-el">
+                                <label class="style-label style-label--checkbox">
+                                    <input class="sytle-input" type="checkbox" name="agree" />
+                                    <div class="sytle-input-element">
+                                        <svg class="icon-check">
+                                            <use xlink:href="#checked"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="sytle-input-text"></div>
+                                </label>
+                            </div>
+                            <div class="agree-row__text">Согласен с
+                                <a href="#">условиями обработки персональных данных</a>
+                            </div>
+                        </div>
+                        <input class="modal-send" type="submit" value="Отправить заявку" />
+                    </form>
+                </div>
+            </div>
+            <!--success message-->
+            <div class="modal" data-modal="truemessage">
+                <div class="modal-content modal-content--true">
+                    <svg class="icon">
+                        <use xlink:href="#interface"></use>
+                    </svg>
+                    <div class="modal-text-true">Ваша заявка принята</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--a(href="#" data-modal="order").modal-get Открыть модальное окно-->
+    <!--block footer end-->
+    <!--корзина-->
+    <script type="text/html" id="top-cart-header-template">
+        <% if(totalItems){ %><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р (<span class="jstore-js-cart-total-count"><%= totalItems %></span>ШТ.)</span><% } else { %>Корзина<% } %>
+        	<div class="cart-inner"><a class="close-cart" href="#" onclick="$('body').toggleClass('cart-open');"></a><% if(totalItems){ %>
+        		<div class="cart-list lsp-cart-items-list" data-template="top-cart-item-template"></div>
+        		<div class="cart-summary">
+        			<div class="cart-total"><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р.</div><% if(totalCost>=495){ %><a class="cart-get" href="#!/order">Оформить</a><% }else{ %><a class="cart-get cart-get--empty" href="/">Оформить</a><% } %>
+        		</div>
+        		<div class="cart-min">Минимальная сумма заказа - 495руб.</div><% } else { %>
+        		<div class="cart-empty">
+        			<div class="cart-empty__icon">
+        				<svg class="icon">
+        					<use xlink:href="#cart--color"></use>
+        				</svg>
+        			</div>
+        			<div class="cart-empty__text">Пока пусто</div>
+        		</div><% } %>
+        	</div>
+    </script>
+    <!--корзина елемент списка-->
+    <script type="text/html" id="top-cart-item-template">
+        <div class="cart-item">
+        		<div class="cart-item__info">
+        			<div class="cart-item__img" style="background-image:url(<%= smallImageUrl %>)"></div>
+        			<div class="cart-item__name"><span><%= name %></span><span class="cart-item__name--add"><%= typesTail %></span></div>
+        		</div>
+        		<div class="cart-item__footer">
+        			<div class="cart-item__incr">
+        				<input class="lsp-button-minus lsp-button-minus lsp-js-item-minus minus" type="button" value="-" onclick="change_count();"/>
+        				<input class="cart-item__incr-total lsp-block-cart-item-amount-c-count" name="count" value="&lt;%= amount %&gt;"/>
+        				<input class="lsp-button-plus lsp-js-item-plus plus" type="button" value="+" onclick="change_count();"/>
+        			</div>
+        			<div class="cart-item__price"><%= price %> Р.</div>
+        		</div>
+        	</div>
+    </script>
+    <!--корзина в fix-->
+    <script type="text/html" id="top-cart-header-template-cart">
+        <% if(totalItems > 0){ %><span class="jstore-js-cart-total-value"><%= totalCost%></span> р<% } %>
+        	<div class="cart-inner"><a class="close-cart" href="#" onclick="$('body').toggleClass('cart-open');"></a><% if(totalItems){ %>
+        		<div class="cart-list lsp-cart-items-list" data-template="top-cart-item-template"></div>
+        		<div class="cart-summary">
+        			<div class="cart-total"><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р.</div><% if(totalCost>=495){ %><a class="cart-get" href="#!/order">Оформить</a><% }else{ %><a class="cart-get cart-get--empty" href="/">Оформить</a><% } %>
+        		</div>
+        		<div class="cart-min">Минимальная сумма заказа - 495руб.</div><% } else { %>
+        		<div class="cart-empty">
+        			<div class="cart-empty__icon">
+        				<svg class="icon">
+        					<use xlink:href="#cart--color"></use>
+        				</svg>
+        			</div>
+        			<div class="cart-empty__text">Пока пусто</div>
+        		</div><% } %>
+        	</div>
+    </script>
+    <!--корзина карточка товара-->
+    <script type="text/html" id="order-cart-order-template">
+        <div class="cart-order"><% if(totalItems){ %>
+        		<div class="cart-order-title">Ваш заказ</div>
+        		<div class="cart-list lsp-cart-items-list" data-template="top-cart-item-template-order"></div><% } else { %>
+        		<div class="cart-empty">
+        			<div class="cart-empty__icon">
+        				<svg class="icon">
+        					<use xlink:href="#cart--color"></use>
+        				</svg>
+        			</div>
+        			<div class="cart-empty__text">Пока пусто</div>
+        		</div><% } %>
+        	</div>
+    </script>
+    <!--корзина елемент списка в оформлении заказа-->
+    <script type="text/html" id="top-cart-item-template-order">
+        <div class="cart-order-item">
+        		<div class="cart-order__img" style="background-image:url(<%= smallImageUrl %>)"></div>
+        		<div class="cart-order__info">
+        			<div class="cart-order__name"><span><%= name %></span><span class="cart-order__name--add"><%= typesTail %></span></div>
+        			<div class="cart-order__price"><%= price %> Р.</div>
+        		</div>
+        	</div>
+    </script>
+    <!--карточка товара-->
+    <script type="text/html" id="lsp-template-menu-item">
+        <div class="item"><a href="<%= url %>" data-target="product" onclick="prevpage = 'popup';  console.log('popup');"><% if(tags.length){ %>
+        			<div class="jstore-tag lsp-block-item-tags"><% _.each(tags, function(tag){ %><span class="jstore-tag lsp-block-item-tag <%= tag.className %>" data-id="&lt;%= tag.translitName %&gt;" title="<%= tag.name %>"></span><% }); %></div><% } %>
+        <% if(largeImageUrl){ %>
+        			<div class="item__img" style="background-image:url(<%=largeImageUrl %>)"></div><% }else{ %>
+        			<div class="item__img item__img--empty" style="background-image:url('/img/item-empty.svg')"></div><% } %></a>
+        		<div class="item-cont">
+        			<div class="item-info">
+        				<div class="item-descr">
+        					<div class="item-descr__el"><span data-jstore-value="weight"><%= weight*1000 %></span><span> гр.</span></div>
+        					<div class="item-descr__el"><span data-jstore-value="energyAmount"><%= energyAmount %></span><span> ккал</span></div>
+        				</div><a class="item-title" href="<%= url %>" onclick="prevpage = 'popup';console.log('popup');"><%= name %></a>
+        				<div class="item-description"><%= description %></div>
+        				<div class="item-param lsp-js-typeModifiers-block">
+        					<div class="lsp-modifier-group lsp-js-types-container"></div>
+        				</div>
+        			</div>
+        			<div class="item-footer">
+        				<div class="item-footer__price"><span><span class="jstore-tag lsp-block-item-price-value" data-jstore-value="cost"><%= cost %></span> Р</span></div>
+        				<div class="item-footer__get">
+        					<div class="item-footer__get-btn lsp-popup-item-tocart-button lsp-button jstore-js-put-to-cart" href="#">В корзину</div>
+        					<div class="item-count jstore-tag select-plus-minus">
+        						<input class="jstore-tag lsp-button-minus jstore-js-amountMinus item-count__el item-count__el--minus" type="button" value="-"/>
+        						<input class="item-count-val jstore-tag" type="text" data-jstore-value="cartCount"/>
+        						<input class="jstore-tag lsp-button-plus jstore-js-amountPlus item-count__el item-count__el--plus" type="button" value="+"/>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+    </script>
+    <!--карточка товара подробная-->
+    <script type="text/html" id="custom-popup">
+        <div class="card-img jstore-tag" style="background-image:url(<%=largeImageUrl %>)"></div>
+        	<div class="card-descr">
+        		<div class="card-title" data-jstore-value="name"></div>
+        		<div class="card-text" data-jstore-value="description"></div>
+        		<div class="card-modificators">
+        			<div class="jstore-tag lsp-js-typeModifiers-block">
+        				<div class="jstore-tag lsp-modifier-group lsp-js-types-container"></div>
+        			</div>
+        		</div>
+        		<div class="jstore-tag lsp-popup-energy-cont" data-jstore-if="fiberAmount || fatAmount || carbohydrateAmount || carbohydrateAmount || energyAmount || weight">
+        			<!--.jstore-tag.lsp-popup-energy-title <%= jStoreApp.t('energy_sum') %>:-->
+        			<div class="card-compound">
+        				<!--Белки-->
+        				<div class="book-row" data-jstore-if="fiberAmount">
+        					<div class="book-row__title"><%= jStoreApp.t('Proteins')%></div>
+        					<div class="book-row__dot"></div>
+        					<div class="book-row__value"><span class="lsp-js-item-fiberAmount-value"><%= fiberAmount*1000%></span><span class="item-card-weight"><%= jStoreApp.t('Gram')%></span></div>
+        				</div>
+        				<!--Жиры-->
+        				<div class="book-row" data-jstore-if="fatAmount">
+        					<div class="book-row__title"><%= jStoreApp.t('Fats')%></div>
+        					<div class="book-row__dot"></div>
+        					<div class="book-row__value"><span class="lsp-js-item-fatAmount-value"><%= fatAmount*1000%></span><span class="item-card-weight"><%= jStoreApp.t('Gram')%></span></div>
+        				</div>
+        				<!--Углеводы-->
+        				<div class="book-row" data-jstore-if="carbohydrateAmount">
+        					<div class="book-row__title"><%= jStoreApp.t('Carbohydrates')%></div>
+        					<div class="book-row__dot"></div>
+        					<div class="book-row__value"><span class="lsp-js-item-carbohydrateAmount-value"><%= carbohydrateAmount*1000%></span><span class="item-card-weight"><%= jStoreApp.t('Gram')%></span></div>
+        				</div>
+        				<!-- Энергетическая ценность-->
+        				<div class="book-row" data-jstore-if="energyAmount">
+        					<div class="book-row__title"><%= jStoreApp.t('Nutritional_value')%></div>
+        					<div class="book-row__dot"></div>
+        					<div class="book-row__value"><span class="lsp-js-item-energyAmount-value"><%= energyAmount%></span><span class="item-card-weight"><%= jStoreApp.t('CCal')%></span></div>
+        				</div>
+        				<!--Вес-->
+        				<div class="book-row" data-jstore-if="weight">
+        					<div class="book-row__title"><%= jStoreApp.t('Weight')%></div>
+        					<div class="book-row__dot"></div>
+        					<div class="book-row__value"><span class="jstore-tag lsp-popup-table-property-value lsp-js-item-weight-value" data-jstore-value="weight"></span><span class="item-card-weight">г.</span></div>
+        				</div>
+        			</div>
+        		</div>
+        		<div class="card-order">
+        			<div class="card-price"><span class="lsp-block-item-price-value" data-jstore-value="cost"></span> P</div>
+        			<div class="card-count">
+        				<input class="jstore-tag minus lsp-button-minus lsp-js-popup-item-minus item-count__el item-count__el--minus" type="button" value="-"/>
+        				<input class="jstore-tag lsp-block-cart-item-amount-c-count item-count-val" name="count" data-jstore-value="cartCount"/>
+        				<input class="jstore-tag plus lsp-button-plus lsp-js-popup-item-plus item-count__el item-count__el--plus" type="button" value="+" title=""/>
+        			</div><a class="btn lsp-popup-item-tocart-button lsp-js-popup-tocart card-get" href="#">В корзину</a>
+        		</div>
+        		<div class="card-modifiers">
+        			<div class="jstore-tag lsp-modifiers-container lsp-js-modifiers-block">
+        				<div class="jstore-tag lsp-modifier-group lsp-js-modifiers-container"></div>
+        			</div>
+        		</div>
+        	</div>
+    </script>
+    <!--build:js js/combined.js-->
+    <script src="bower/jquery/dist/jquery.js"></script>
+    <script src="bower/slick-carousel/slick/slick.js"></script>
+    <script src="bower/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="js/add-on.js"></script>
+    <!-- endbuild-->
+    <script src="js/script.js"></script>
+    <script src="js/script-edit.js"></script>
+</body>
+
+</html>

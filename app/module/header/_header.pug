@@ -26,6 +26,7 @@ mixin header()
 									+icon(item,"icon")
 		.main-cont
 			.header-info
+
 				a(href="#").header-logo
 					img(src="img/logo.svg", alt="")
 				.header-search
@@ -48,6 +49,11 @@ mixin header()
 			.header-menu-wrap
 				.main-cont
 					.header-menu
+						.head-toggle
+							+icon("menu","icon icon-open")
+							+icon("close","icon icon-close")
+						a(href="/").header-menu__logo--mobile
+							img(src="img/logo-mobile.svg", alt="")
 						a(href="/").header-menu__logo
 							img(src="img/logo--small.svg", alt="")
 						#lsp-block-tree.lsp-block-menu-tree
@@ -55,5 +61,30 @@ mixin header()
 							.header-menu__basket-icon
 								+icon("cart","icon icon-cart")
 							.header-menu__basket-val.lsp-block-cart(data-template="top-cart-header-template-cart")
+			.slide-menu
+				.slide-menu__list
+					.slide-menu__title
+						+icon("dinner","icon")
+						span Наше меню
+						+icon("arrow-down","icon icon-arrow")
 
+					#lsp-block-tree.lsp-block-menu-tree
+				.slide-menu-cont
+					.slide-menu-adv
+						-
+							var items = [
+							'Доставка и оплата',
+							'Новости',
+							'Вакансии',
+							'О нас',
+							'Франшиза',
+							'Контакты'
+							];
+						each item in items
+							a(href="#").slide-menu-adv__el #{item}
+					.slide-menu__auth
+						a(href="#!/personal").header-auth__enter
+							span.user войти
+					a(href="tel:8 800 5353 555").slide-menu__phone 8 800 5353 555
+					.slide-menu__time Работаем с 9:00 до 23:00
 	//block header end

@@ -45,6 +45,8 @@ mixin wgt()
 
 				.cart-item__price <%= price %> Р.
 
+
+
 	//корзина в fix
 	script(type="text/html" id="top-cart-header-template-cart")
 		<% if(totalItems > 0){ %>
@@ -72,6 +74,30 @@ mixin wgt()
 					+icon("cart--color","icon")
 				.cart-empty__text Пока пусто
 			<% } %>
+
+	//корзина карточка товара
+	script(type="text/html" id="order-cart-order-template")
+		.cart-order
+			<% if(totalItems){ %>
+			.cart-order-title Ваш заказ
+			.cart-list.lsp-cart-items-list(data-template='top-cart-item-template-order')
+			<% } else { %>
+			.cart-empty
+				.cart-empty__icon
+					+icon("cart--color","icon")
+				.cart-empty__text Пока пусто
+			<% } %>
+
+	//корзина елемент списка в оформлении заказа
+	script(type="text/html" id="top-cart-item-template-order")
+		.cart-order-item
+			.cart-order__img(style!="background-image:url(<%= smallImageUrl %>)")
+			.cart-order__info
+				.cart-order__name
+					span <%= name %>
+					span.cart-order__name--add <%= typesTail %>
+				.cart-order__price <%= price %> Р.
+
 
 	//карточка товара
 	script(type="text/html" id="lsp-template-menu-item")

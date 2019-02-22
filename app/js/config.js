@@ -1,6 +1,6 @@
 window.jStoreConfig = {
-    //"restaurant" : "3f46ac68-54f4-4ea5-84c1-b7db224a544e",
-    "restaurant" : "a8af42fb-ac27-11e8-80d2-d8d385655247",
+    "restaurant" : "3f46ac68-54f4-4ea5-84c1-b7db224a544e",
+    //"restaurant" : "a8af42fb-ac27-11e8-80d2-d8d385655247",
     //"restaurant" : "f0a741f9-b494-11e7-80ca-d8d385655247",
 			'loc': {
 				'Auth': 'Вход',

@@ -1,0 +1,66 @@
+include block_html/_style.pug
+include block_html/_include.pug
+
++header()
+
+.loader
+	img(src="img/loader.svg", alt="")
+
+.page
+	.main-cont
+		.bread
+			-
+				var items = ['Главная','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей'];
+			each item in items
+				a(href="#").bread__el #{item}
+		.section-title Доставка и оплата
+
+	.deliver
+		.main-cont
+			.deliver-wrap
+				.deliver-card
+					.deliver-card__head
+						.deliver-card__head-title Прием заказов
+						.deliver-card__head-date с 11:00 до 22:30
+					.deliver-card__title Бесплатная доставка от 500 р
+					.deliver-card__text Условия доставки в отдаленные части города уточняйте у операторов call-центра.
+		.deliver-map#deliver-map
+
+	.main-cont
+		.title--md Способы оплаты
+		.deliver-adv
+			.deliver-adv__el
+				.deliver-adv__el-icon
+					+icon("coin","icon")
+				.deliver-adv__el-cont
+					.deliver-adv__el-title Наличными
+					.deliver-adv__el-text Оплата наличными курьеру или в ресторане при получении заказа
+			.deliver-adv__el
+				.deliver-adv__el-icon
+					+icon("card","icon")
+				.deliver-adv__el-cont
+					.deliver-adv__el-title Картой онлайн
+					.deliver-adv__el-text При оформлении заказа на сайте (сервис доступен для карт: Visa, MasterCard)
+			.deliver-adv__el
+				.deliver-adv__el-icon
+					+icon("pocket","icon")
+				.deliver-adv__el-cont
+					.deliver-adv__el-title Картой при получении
+					.deliver-adv__el-text При получении курьеру или в ресторане. Принимаются банковские карты MasterCard, Visa, МИР
+
++footer()
++wgt()
+
+script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU')
+script.
+	ymaps.ready(init);
+	function init() {
+		var myMap = new ymaps.Map('deliver-map', {
+			center: [55.74954, 37.621587],
+			zoom: 10,
+			controls: [],
+			scroll: false
+		});
+		myMap.behaviors.disable('scrollZoom');
+	}
+include ./block_html/_script.pug

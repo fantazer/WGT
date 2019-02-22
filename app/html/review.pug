@@ -1,0 +1,39 @@
+include block_html/_style.pug
+include block_html/_include.pug
+
++header()
+
+.loader
+	img(src="img/loader.svg", alt="")
+
+.page
+	.main-cont
+		.bread
+			-
+				var items = ['Главная','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей'];
+			each item in items
+				a(href="#").bread__el #{item}
+		.section-title Отзывы
+		.review-wrap
+			.review
+				- for (var j=0;j<7;j++)
+					.review__el
+						.review__el-head
+							.review__el-name Анжелика
+							.review-date 28 Сентября 2018
+							.star-row
+								- for (var i=1;i<6;i++)
+									.star-row__el(class=i === 5 ? 'star-row__el--empty': '')
+										+icon("star","icon")
+						.review__el-title Роллы были божественны!
+						.review-text Ваши воки просто божественны! Много мяса и соуса, свежие овощи. Выглядит всё очень аппетитно. Доставка всегда вовремя, а курьеры вежливы даже в сильный мороз))) спасибо вам за вкусную еду, за своевременную доставку и хорошее настроение )) вы лучшие!
+			.review-get-wrap
+				.review-get
+					.review-get__title Оставьте отзыв о нашем заведении
+					.review-get__text Этим вы поможете <br> нам стать еще лучше! :)
+					a(href="#").review-get__btn написать
+
++footer()
++wgt()
+
+include ./block_html/_script.pug

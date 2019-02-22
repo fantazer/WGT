@@ -1,0 +1,28 @@
+include block_html/_style.pug
+include block_html/_include.pug
+
++header()
+
+.loader
+	img(src="img/loader.svg", alt="")
+
+.page
+	.main-cont
+		.bread
+			-
+				var items = ['Главная','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей'];
+			each item in items
+				a(href="#").bread__el #{item}
+		.section-title Акции
+		.sale
+			- for (var i=0;i<7;i++)
+				a(href="#").sale__el
+					.sale__el-img(style="background-image:url('img/sale.jpg')")
+					.sale__el-content
+						.sale__el-title Мясная пицца в подарок!
+						.sale__el-text Дарим пиццу «Двойная пепперони» 25 см при заказе от 1290 ₽ по промокоду 4356, «Двойная пепперони» 30 см при заказе от 1590 ₽ по промокоду 7030 и «Двойная пепперони» 35 см при заказе от 1890 ₽ по промокоду 7035. Акция действует на доставку, самовывоз и в ресторане. Акция действует до 2 декабря 2018 года. Промокоды не суммируются
+						.sale__el-code Промокод 4356
++footer()
++wgt()
+
+include ./block_html/_script.pug

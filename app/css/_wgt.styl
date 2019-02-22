@@ -25,6 +25,8 @@
 		margin-top: 0
 		margin-bottom: 20px
 	.lsp-popup-cont
+		+below(640px)
+			width: 100%
 		position: absolute;
 		top: 150px;
 		width: 450px
@@ -36,13 +38,27 @@
 		box-shadow: 0 16px 24px rgba(0, 0, 0, 0.16);
 		border-radius 10px
 	.lsp-popup-cross
+		+below(640px)
+			background-color: white
+			opacity:1
+			padding: 4px
+			round()
+			size 20px
+			background-size: 50%
+			top 10px
+			right: 10px
+			bsh()
 		background: url("../img/close-fat.svg") no-repeat center center transparent;
-		width: 19px;
-		height: 19px;
+		size: 15px
 		position: absolute;
-		top: -40px
-		right: 0
+		top: 20px
+		right: 20px
 		cursor: pointer;
+		opacity:.3
+		tr(all)
+		&:hover
+			opacity:1
+
 
 
 .jstore-tag
@@ -82,14 +98,21 @@
 
 
 .header-menu
+	+below(1024px)
+		margin-left: -10px
+		width calc(100% + 20px)
+		height: 50px
 	f()
 	.lsp-block-menu-tree
-		padding: 0
+		+below(1024px)
+			display: none
 		margin: 0
 		flex(between)
 		padding: 15px 0 20px 0
 		width: 100%
 	li
+		+below(1200px)
+			font-size: 14px
 		list-style none
 		@extend .type--md
 
@@ -99,6 +122,8 @@
 //list items
 .jstore-page-category-root
 	h1,h2
+		+below(768px)
+			margin-bottom: 25px
 		color black
 		padding: 0
 		margin: 0
@@ -142,13 +167,15 @@
 	legend
 		display: none
 .card-descr
-
+	+below(640px)
+		padding: 15px
 	padding: 30px 30px 0 30px
 //карточка подробная
 #lsp-block-popup[data-page='show_item']
 	position: relative
-
 	.lsp-popup-cont
+		+below(640px)
+			width: 100%
 		left initial
 		right 0
 		top: 0!important
@@ -211,6 +238,8 @@
 	margin-bottom: 20px
 
 .card-compound
+	+below(640px)
+		margin-bottom: 20px
 	margin-bottom: 40px
 	.book-row
 		margin-bottom: 10px
@@ -220,6 +249,9 @@
 
 .card-modifiers
 	.lsp-modifiers-container
+		+below(640px)
+			padding: 10px
+			margin-left: -10px
 		padding: 30px
 		margin-left: -30px
 		width calc(100% + 60px)
@@ -227,6 +259,8 @@
 	em
 		font-style initial
 	.lsp-modifier-item
+		+below(640px)
+			fw()
 		flex(between)
 		width: 100%
 		margin-bottom: 10px
@@ -248,16 +282,27 @@
 	.lsp-modifier-summ-c
 		width: 30%
 	.lsp-modifer-desc
-
+		+below(640px)
+			width: 100%
 		f()
 		align-items: center
 		width: 50%
 	.lsp-modifier-name-c
+		+below(640px)
+			width: 100%
+			margin-bottom: 10px
 		width: 45%
 	.lsp-modifier-name
 		color black
 		font-weight: 500
 .cart-inner
+	+below(640px)
+		width: 100%
+		position: fixed
+		top 50px
+		border-top 1px solid $border-color
+		max-height calc(100vh - 50px)
+		padding: 0
 	position: absolute
 	top: 100%
 	z-index 100
@@ -273,6 +318,9 @@
 		border-bottom 1px solid $border-color
 
 .cart-open
+	+below(1024px)
+		overflow hidden
+		height 100vh
 	.cart-inner
 		display: block
 	.cart
@@ -284,6 +332,11 @@
 		z-index 1010
 		.cart-inner
 			border-radius 0 0 10px 10px
+	.header-menu-wrap
+		+below(1024px)
+			z-index 1010
+			background: white
+			position: relative
 .cart-item
 	text-transform: none
 	text-align: left
@@ -341,6 +394,7 @@
 	opacity: .55
 	font-size: 14px
 	padding-bottom: 20px
+	font-weight: 300
 .cart-list
 	max-height 330px
 	overflow-y auto
@@ -370,16 +424,16 @@
 
 .cart-item__img
 	bg-full()
-	padding: 12% 10%
-	size 60px
+	padding: 10% 10%
+	size 65px
 	margin-right: 30px
-
+	background-size: contain
 
 //order form
-.label-row-text
-	display: none!important
+
 #lsp-block-order-form
-	width: 65%
+	.label-row-text
+		display: none!important
 	input[type=radio]
 		background: #fff
 		border-radius: 50%
@@ -419,6 +473,8 @@
 	.lsp-js-form-field-delivery_date
 		width: 100%
 	.label-row.label-row-half
+		+below(480px)
+			width: 48%
 		width: 32%
 	.lsp-js-form-field-message
 		textarea
@@ -435,6 +491,8 @@
 				border-bottom:3px solid $red
 				color:#000
 			span
+				+below(480px)
+					font-size: 10px
 				font-size:15px
 				text-transform:uppercase
 				color:#a3a3a3
@@ -448,12 +506,86 @@
 				display:inline-block
 				margin-bottom:20px
 				cursor:pointer
-.lsp-js-form-field-userAgreement
-	.label-row-field
-		input[type=checkbox]
-			width 30px!important
-			display: inline-block!important
-			margin-bottom: -2px
-			transform: translateY(3px)
+	select.jstore-tag
+		width: 100%
+		padding: 18px 15px
+		border 1px solid #d7d7da
+		border-radius 10px
+		outline none!important
+		background: #f5f5f8
+	input[type=checkbox]
+		width 30px!important
+		display: inline-block!important
+		transform: translateY(2px)
+
+
+
 
 //order form===end
+
+
+.container--order
+	+below(768px)
+		fw()
+	f()
+	justify-content: space-between
+	.item-container
+		+below(768px)
+			width: 100%
+			margin-bottom: 20px
+		width: 65%
+
+.order-container
+	+below(768px)
+		width: 50%
+	+below(480px)
+		width: 100%
+	width: 30%
+
+.cart-order
+	padding: 25px
+	br(12px)
+	border 1px solid $border-color
+	.cart-empty
+		border 1px solid $border-color
+		border-radius 15px
+	.cart-list
+		max-height: initial!important
+	.lsp-block-cart-item
+		border-bottom 1px dashed #d4d4d4
+		padding-bottom: 15px
+		margin-bottom: 15px
+		&:last-child
+			padding-bottom: 0
+			margin-bottom: 0
+			border 0
+.cart-order-item
+	f()
+
+.cart-order__img
+	bg-full()
+	padding: 10% 10%
+	size 65px
+	margin-right: 30px
+	background-size: contain
+	br(12px)
+	border 1px solid $border-color
+.cart-order__name
+	@extend .type--md
+	font-weight 500
+	margin-right: 3px
+	display: inline
+	width: calc(100% - 100px)
+.cart-order__name--add
+	font-weight: 300
+
+.cart-order-title
+	@extend .type--lgx
+	font-weight: 700
+	color black
+	margin-bottom: 25px
+.cart-order__price
+	margin-top: 10px
+
+.cart-order__info
+	padding-top: 5px

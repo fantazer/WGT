@@ -1,0 +1,81 @@
+include block_html/_style.pug
+include block_html/_include.pug
+
++header()
+
+.loader
+	img(src="img/loader.svg", alt="")
+
+.page
+	.main-cont
+		.bread
+			-
+				var items = ['Главная','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей'];
+			each item in items
+				a(href="#").bread__el #{item}
+		.section-title Контакты
+
+	.contact
+		.main-cont
+			.contact-wrap
+				.contact-card
+					.contact-card__head
+						.contact-card__head-title Прием заказов
+						.contact-card__head-date с 11:00 до 22:30
+					.contact-card__row
+						.contact-card__icon
+							+icon("phone","icon")
+						.contact-card__content
+							.contact-card__phone 8 800 555 3535
+							.contact-card__phone +7 (499) 110-12-15
+					.contact-card__row
+						.contact-card__icon
+							+icon("location","icon")
+						.contact-card__content
+							span г. Москва, ул. Кировоградская 23А
+							span г. Пенза, пр. Красноармейцев 123
+							span г. Кирова, ул. Космонавтов 12а
+		.contact-map#contact-map
+
+	.main-cont
+		.contact-form
+			.contact-form__title Есть вопросы? <br> Задайте их нам
+			form(action="javascript:void(null);")
+				.input-row-wrap--half
+					.input-row
+						.review-row-name Ваше имя
+						input(type="text" name="name" placeholder="Ваше имя").input
+					.input-row
+						.review-row-name Телефон
+						input(type="text" name="phone" placeholder="Телефон").input
+				.input-row
+					.review-row-name Вопрос
+					textarea(name="info", cols="30", rows="8" placeholder="Сообщение").input
+				.contact-form-footer
+					.agree-row
+						.check-el
+							label.style-label.style-label--checkbox
+								input(type="checkbox" name="agree").sytle-input
+								.sytle-input-element
+									+icon("checked","icon-check")
+								.sytle-input-text=text
+						.agree-row__text Согласен с
+							a(href="#") условиями обработки персональных данных
+					input(type="submit" value="отправить").contact-form-btn
+
++footer()
++wgt()
+
+script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU')
+script.
+	ymaps.ready(init);
+	function init () {
+		var myMap = new ymaps.Map('contact-map', {
+				center: [55.74954, 37.621587],
+				zoom: 10,
+				controls: [],
+				scroll:false
+		});
+		myMap.behaviors.disable('scrollZoom');
+	}
+include ./block_html/_script.pug

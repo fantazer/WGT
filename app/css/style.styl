@@ -23,7 +23,14 @@ body
 
 //.header
 .header-top-wrap
+	+below(1024px)
+		display: none
 	background: #393f4e
+.header-menu-wrap
+	+below(1024px)
+		margin-left: -10px
+		width calc(100% + 20px)
+		z-index 1010
 //.main-cont
 .header-top
 	flex(between)
@@ -56,11 +63,16 @@ body
 
 
 .header-info
+	+below(1024px)
+		padding: 0
+		display: none
 	flex(between)
 	padding: 40px 0 20px 0
 .header-logo
 	margin-right: 4%
 .header-search
+	+below(1200px)
+		display: none
 	width: 30%
 .header-search__form
 	position: relative
@@ -100,6 +112,9 @@ body
 
 //for custom navigation
 .main-slider-wrap
+	.slider-control
+		+below(640px)
+			display: none
 	position: relative
 	overflow: hidden
 .slider-control
@@ -132,6 +147,8 @@ body
 	padding: 15% 10%
 
 .page
+	+below(768px)
+		padding: 30px 0
 	padding: 60px 0 100px 0
 	background: #f6f6fa
 .page--white
@@ -291,6 +308,11 @@ input.item-count__el
 	.item-title
 		margin-bottom: 0
 .header-menu__basket
+	+below(1024px)
+		flex(mid)
+		fl()
+		margin-left: auto
+		width: 60px
 	display: none
 	width: 70px
 	background: $red
@@ -306,9 +328,16 @@ input.item-count__el
 	color white
 	text-align: center
 .header-menu__logo
+	+below(1024px)
+		display: none!important
+		flex(mid)
 	display: none
 	margin-right: 25px
-
+.header-menu__logo--mobile
+	+above(1025px)
+		display: none
+	flex(mid)
+	margin-right: 25px
 @keyframes slideInDown
 	from
 		transform: translate3d(0, -100%, 0);
@@ -317,7 +346,7 @@ input.item-count__el
 		transform: translate3d(0, 0, 0);
 
 .shrink
-	position fixed
+	position fixed!important
 	top 0
 	left 0
 	background white
@@ -493,6 +522,8 @@ input.item-count__el
 //modal===end
 
 .footer-wrap
+	+below(768px)
+		padding-top: 30px
 	background: $dark
 	padding-top: 60px
 	a
@@ -500,11 +531,19 @@ input.item-count__el
 		&:hover
 			color $red
 .footer-card
+	+below(768px)
+		grid-template-columns repeat(2, 1fr)
+	+below(640px)
+		margin-bottom: 30px
+	+below(480px)
+		grid-template-columns 1fr
 	display: grid
 	grid-gap 25px
 	grid-template-columns repeat(4, 1fr)
 	margin-bottom: 100px
 .footer-card__el
+	+below(480px)
+		height: 130px
 	padding: 25px
 	background-color white
 	border-radius 10px
@@ -535,17 +574,25 @@ input.item-count__el
 	line-height: 1.6
 
 .footer-info
+	+below(640px)
+		fl()
+		flex(mid)
+		padding-bottom: 30px
 	f()
 	justify-content: space-between
 	padding-bottom: 85px
 	color white
-//.footer-info__about
+.footer-info__about
+	+below(640px)
+		display: none
 .footer-logo
 	width: 100px
 	margin-bottom: 10px
 .footer-copy
 	opacity: .7
 .footer-menu
+	+below(640px)
+		display: none
 	f()
 	fw()
 .footer-menu__el
@@ -554,7 +601,18 @@ input.item-count__el
 	display: block
 	color white
 //.footer-contact
+.footer-contact--mail
+	+below(640px)
+		order 2
+		flex(mid)
+		fl()
+.footer-contact--phone
+	+below(640px)
+		order 1
+		margin-bottom: 20px
 .footer-mail
+	+below(640px)
+		margin-bottom: 10px
 	opacity: .7
 	margin-bottom: 25px
 	color white
@@ -563,14 +621,20 @@ input.item-count__el
 //.soc-row__el
 //.icon
 .footer-tel
+	+below(640px)
+		margin-bottom: 10px
 	@extend .type--lg
 	color white
 	margin-bottom: 20px
 	display: inline-block
 .footer-call
+	+below(640px)
+		text-align: center
 	opacity: .7
 
 .footer-pay
+	+below(640px)
+		display: none
 	f()
 	align-items: center
 	.footer-pay__text
@@ -592,6 +656,10 @@ input.item-count__el
 	align-items: center
 
 .footer-politic
+	+below(640px)
+		margin-left:initial
+		text-align: center
+		width: 100%
 	color white
 	margin-left: auto
 
@@ -634,6 +702,8 @@ input.item-count__el
 	font-size: 10px
 
 .card-count
+	+below(640px)
+		margin-bottom: 20px
 	flex(mid)
 	input
 		background: white
@@ -643,23 +713,849 @@ input.item-count__el
 		color #999999
 
 .card-order
+	+below(640px)
+		flex(mid)
+		fl()
 	flex(between)
 	margin-bottom: 40px
 	width: 100%
 
 .card-price
+	+below(640px)
+		margin-bottom: 15px
 	font-size: 32px
 	font-weight:500
 	color black
 
 .card-get
+	+below(640px)
+		width: 100%
+		margin-bottom: 30px
 	@extend .btn--md
 	@extend .btn--mark
 	color white!important
 
-
-
 .cart-wrap
 	position: relative
 
+.head-toggle
+	size 50px
+	flex(mid)
+	cp()
+	border-right 1px solid $border-color
+	margin-right: 20px
+	+above(1025px)
+		display: none
+	.icon
+		size 25px
+		fill black
+	.icon-close
+		display: none
 
+.head-toggle--open
+	.icon-close
+		display: block
+	.icon-open
+		display: none
+
+.slide-menu
+	+above(1025px)
+		display: none !important
+	+below(640px)
+		top: 51px //Высота хедера
+	+below(480px)
+		width: 100%
+	background: #393f4e
+	color white
+	position: fixed
+	height: calc(100% - 50px) //Отступ хедер
+	z-index 1250
+	top 50px
+	left 0
+	width: 320px
+	transform translateX(-100%)
+	tr(all)
+	.header-auth__enter
+		width: 100%
+		background: none
+		color white
+		padding:15px
+		border 1px solid rgba(255, 255, 255, 0.24)
+		margin: 30px 0
+
+	.lsp-block-menu-tree
+		display: none
+	li.jstore-tag
+		@extend .type--md
+		list-style none
+		padding: 15px 30px
+		border-bottom 1px solid rgba(129, 129, 129, 0.1)
+		background: #292e3a
+		a
+			color white
+
+.slide-menu--open
+	transform translateX(0%)
+	overflow-y: auto
+.slide-menu__list-el
+	display: block
+	margin-bottom: 40px
+	color white
+	font-size: 16px
+	up()
+	tr(all)
+	&:hover
+		color red
+.body-fix
+	overflow-Y: scroll!important
+	width:100%!important
+.slide-menu__title
+	f()
+	align-items: center
+	padding: 15px 30px
+	cp()
+	@extend .type--md
+	font-weight: 500
+
+	.icon
+		size 20px
+		fill white
+		margin-right: 20px
+	.icon-arrow
+		margin-left: auto
+		margin-right: 0
+		size 16px
+		tr(all)
+
+.slide-menu__title--active
+	.icon-arrow
+		transform rotate(180deg)
+
+.slide-menu-cont
+	padding: 0 30px 30px 30px
+
+.slide-menu-adv__el
+	display: block
+	padding: 15px 0
+	color #ffffffc9
+	@extend .type--md
+	border-bottom 1px solid #414757
+	&:hover
+		color white
+.slide-menu__phone
+	color white
+	@extend .type--lg
+	font-weight 400
+	margin-bottom: 10px
+	display: block
+.slide-menu__time
+	color #ffffffc9
+
+
+	+below(640px)
+		margin-bottom: 20px 0
+		display: none
+	f()
+	fw()
+	//margin-bottom: 45px
+	margin: 20px 0 10px 0
+
+.bread
+	margin-bottom: 30px
+.bread__el
+	margin-right: 15px
+	margin-bottom: 10px
+	position: relative
+	@extend .type--sm
+	opacity .3
+	&:after
+		content '-'
+		position: absolute
+		right: -10px
+		top 1px
+	&:last-child
+		&:after
+			content ''
+			display: none
+
+
+.sale
+	+below(768px)
+		grid-template-columns repeat(2,1fr);
+	+below(480px)
+		margin-left: -10px
+		width:calc(100% + 20px)
+		grid-template-columns repeat(1,1fr);
+	display: grid
+	grid-row-gap 40px
+	grid-column-gap 20px
+	grid-template-columns repeat(2,1fr);
+//.sale__el
+.sale__el-img
+	+below(640px)
+		br(0)
+	bg-full()
+	padding: 20% 10%
+	margin-bottom: 15px
+	br(10px)
+.sale__el-title
+	@extend .type--lg
+	margin-bottom: 15px
+	color black
+.sale__el-text
+	line-height: 1.6
+	margin-bottom: 30px
+	color rgba(0, 0, 0, 0.7)
+.section-title
+	+below(1024px)
+		margin: 30px 0
+	@extend .type--xxl
+	color black
+	margin: 45px 0
+.sale__el-content
+	padding: 10px
+.sale__el-code
+	font-weight: 700
+	@extend .type--lg
+	color $red
+
+.star-row
+	f()
+	.icon
+		fill #ffa200
+	.star-row__el--empty
+		.icon
+			fill $snow
+.star-row__el
+	margin-right: 10px
+	.icon
+		size 18px
+//.review
+
+.review__el
+	padding-bottom: 30px
+	margin-bottom: 30px
+	border-bottom 1px dashed #c5c5c5
+.review__el--active
+	padding: 30px
+	flex(mid)
+	fl()
+	bgi('pattern.jpg')
+	background-repeat: repeat
+.review__msg-icon
+	margin-bottom: 30px
+	.icon
+		size 50px
+.review__msg-title
+	@extend .type--xl
+	margin-bottom: 10px
+.review__msg-text
+	line-height: 1.6
+	margin-bottom: 40px
+	text-align: center
+.review__msg-get
+	@extend .btn--md
+	@extend .btn--mark
+	padding: 20px
+
+.review-heart
+	f()
+	margin-bottom: 20px
+	padding-bottom: 20px
+	border-bottom 1px solid $gray--light
+	width: 100%
+	.icon
+		size 20px
+		margin-right: 5px
+		fill $green
+.review-text
+	line-height: 1.6
+	margin-bottom: 20px
+.review-date
+	+below(640px)
+		width: 100%
+		margin-bottom: 10px
+	opacity .5
+
+.review-wrap
+	+below(640px)
+		fw()
+	f()
+	justify-content: space-between
+	align-items: flex-start
+.review
+	+below(768px)
+		width calc(100% - 320px)
+	+below(640px)
+		width: 100%
+		margin-bottom: 20px
+		order 2
+	width: 65%
+.review-get-wrap
+	width: 30%
+
+.review__el-head
+	+below(640px)
+		fw()
+	f()
+	align-items: center
+	margin-bottom: 20px
+	.star-row
+		+below(640px)
+			margin-left:initial
+		margin-left: auto
+
+.review__el-name
+	+below(640px)
+		width: 100%
+		margin-bottom: 10px
+		font-size: 16px
+	@extend .type--md
+	font-weight 500
+	color black
+	margin-right: 20px
+
+.review__el-title
+	@extend .type--lgx
+	color black
+	margin-bottom: 20px
+	line-height: 1.6
+	font-weight: 700
+
+.review-get-wrap
+	+below(640px)
+		width: 100%
+		margin-bottom: 30px
+	width: 275px
+.review-get
+	+below(640px)
+		padding: 30px 20px
+	flex(mid)
+	fl()
+	box-shadow 0 16px 24px rgba(0, 0, 0, 0.06)
+	border-radius 8px
+	border 1px solid #707070
+	background-color $dark
+	padding: 40px
+.review-get__title
+	@extend .type--lg
+	color white
+	text-align: center
+	margin-bottom: 20px
+.review-get__text
+	+below(640px)
+		margin-bottom: 30px
+	margin-bottom: 50px
+	text-align: center
+	color white
+	opacity 0.7
+	line-height: 1.4
+.review-get__btn
+	+below(480px)
+		width: 100%
+	@extend .btn--md
+	@extend .btn--mark
+
+.vacancy
+	+below(768px)
+		grid-template-columns 1fr 1fr
+	+below(640px)
+		grid-template-columns 1fr
+	display: grid
+	grid-gap 25px
+	grid-template-columns repeat(3, 1fr)
+.vacancy__el
+	f()
+	fl()
+	border-radius 8px
+	border 1px solid #e5e5e5
+	background-color #ffffff
+	padding: 35px 25px
+.vacancy__el-title
+	@extend .type--lgx
+	font-weight: 600
+	margin-bottom: 20px
+	color black
+.vacancy__el-text
+	color rgba(0, 0, 0, 0.7)
+	line-height: 1.6
+	margin-bottom: 40px
+
+.vacancy__el-footer
+	+below(1024px)
+		flex(mid)
+		fl()
+	border-top 1px dashed #e9e9e9
+	padding-top: 30px
+	flex(between)
+	margin-top: auto
+.vacancy__el-val
+	+below(1024px)
+		margin-bottom: 30px
+	@extend .type--lg
+	color black
+.vacancy__el-get
+	+below(1024px)
+		width: 100%
+	@extend .btn--md
+	@extend .btn--mark
+	padding: 18px 45px
+
+.deliver
+	+below(768px)
+		margin-bottom: 50px
+		margin-top: 30px
+	+below(640px)
+		margin-top: 0
+	position: relative
+	margin-bottom: 90px
+.deliver-map
+	+below(640px)
+		position: static
+		height: 400px
+	position: absolute
+	width: 100%
+	height: 100%
+	top 0
+	left 0
+	overflow: hidden
+//.main-cont
+//.deliver-wrap
+.deliver-card
+	+below(640px)
+		margin-top: 0
+		margin-bottom: 0
+		border-radius 0
+		margin-left: -10px
+		width calc(100% + 20px)
+		height: auto
+	f()
+	fl()
+	padding: 30px
+	box-shadow 0 16px 24px rgba(0, 0, 0, 0.06)
+	border-radius 12px
+	background-color $dark
+	color white
+	width: 375px
+	height: 540px
+	margin-left: auto
+	margin-top: -20px
+	margin-bottom: -20px
+	position: relative
+	z-index 1
+//.deliver-card__head
+.deliver-card__head-title
+	@extend .type--sm
+	margin-bottom: 10px
+.deliver-card__head-date
+	+below(640px)
+		margin-bottom: 40px
+	color #c5ff00
+	@extend .type--lgx
+.deliver-card__title
+	@extend .type--xl
+	color white
+	font-weight: 600
+	margin-top: auto
+	margin-bottom: 30px
+.deliver-card__text
+	opacity:.7
+	line-height: 1.4
+	font-weight: 300
+
+.deliver-adv
+	+below(768px)
+		grid-gap 20px
+		margin-bottom: 50px
+		margin-top: 30px
+	+below(640px)
+		grid-template-columns 1fr
+	display: grid
+	grid-gap 40px
+	grid-template-columns repeat(3, 1fr)
+	margin-top: 70px
+	margin-bottom: 170px
+.deliver-adv__el
+	f()
+.deliver-adv__el-icon
+	size 40px
+	margin-right: 30px
+	.icon
+		size 40px
+		fill $red
+//.deliver-adv__el-cont
+.deliver-adv__el-title
+	@extend .type--lgx
+	margin-bottom: 20px
+	color black
+.deliver-adv__el-text
+	line-height: 1.4
+
+.title--md
+	@extend .type--xl
+	margin-bottom: 40px
+	color black
+
+.get-rating
+	+below(480px)
+		fw()
+		margin-bottom: 20px
+	f()
+	justify-content: space-between
+	align-items: center
+	margin-bottom: 40px
+	.icon
+		opacity: .3
+		cp()
+.get-rating-text
+	+below(480px)
+		width: 100%
+		margin-bottom: 10px
+	@extend .type--lg
+	color black
+.star--active
+	.icon
+		opacity: 1
+
+.input-row
+	width: 100%
+	.input
+		width: 100%
+
+.review-item
+	+below(768px)
+		width: 100%
+	width: 675px
+	.input-row
+		+below(480px)
+			width: 100%
+		width: 55%
+.review-item-row
+	+below(480px)
+		fw()
+		margin-bottom: 10px
+	f()
+	justify-content: space-between
+	margin-bottom: 30px
+	.agree-row
+		+below(480px)
+			width: 100%
+			margin-bottom: 20px
+		width: 60%
+.review-item-name
+	+below(480px)
+		width: 100%
+		margin-bottom: 10px
+	@extend .type--lg
+	color black
+	width: 30%
+	margin-top: 10px
+.star-row-wrap
+	+below(480px)
+		width: 100%
+	width: 55%
+
+.review-item-get
+	+below(480px)
+		width: 100%
+	width: 40%
+
+.review-item-btn
+	+below(480px)
+		width: 100%
+		margin-left:initial
+	@extend .btn--md
+	@extend .btn--mark
+	margin-left: auto
+
+//contact
+.contact
+	+below(768px)
+		margin-bottom: 50px
+		margin-top: 30px
+	+below(640px)
+		margin-top: 0
+	position: relative
+	margin-bottom: 90px
+.contact-map
+	+below(640px)
+		position: static
+		height: 400px
+	position: absolute
+	width: 100%
+	height: 100%
+	top 0
+	left 0
+	overflow: hidden
+//.main-cont
+//.contact-wrap
+.contact-card
+	+below(640px)
+		margin-top: 0
+		margin-bottom: 0
+		border-radius 0
+		margin-left: -10px
+		width calc(100% + 20px)
+		height: auto
+	padding: 40px 30px
+	box-shadow 0 16px 24px rgba(0, 0, 0, 0.06)
+	border-radius 12px
+	background-color $dark
+	color white
+	width: 375px
+	margin-top: 40px
+	margin-bottom: 40px
+	position: relative
+	z-index 1
+.contact-card__head-title
+	@extend .type--sm
+	margin-bottom: 10px
+.contact-card__head-date
+	+below(640px)
+		margin-bottom: 40px
+	color #c5ff00
+	@extend .type--lgx
+.contact-card__title
+	@extend .type--xl
+	color white
+	font-weight: 600
+	margin-top: auto
+	margin-bottom: 30px
+.contact-card__text
+	opacity:.7
+	line-height: 1.4
+	font-weight: 300
+
+.contact-card__row
+	f()
+	padding: 30px 0
+	border-top 1px solid rgba(255, 255, 255, 0.1)
+	&:nth-child(3)
+		padding-bottom: 0
+.contact-card__icon
+	margin-right: 20px
+	.icon
+		size 28px
+
+.contact-card__phone
+	@extend .type--lgx
+	color white
+	&:nth-child(1)
+		margin-bottom: 10px
+
+.contact-card__content
+	span
+		display: inline-block
+		margin-bottom: 10px
+		opacity: .7
+
+.contact-card__head
+	padding-bottom: 30px
+//contact===end
+
+.contact-form
+	+below(768px)
+		margin-bottom: 40px
+	center(575px,0)
+	margin-bottom: 100px
+	.input-row
+		margin-bottom: 25px
+.contact-form__title
+	@extend .type--xl
+	text-align: center
+	color black
+	margin-bottom: 50px
+
+.review-row-name
+	@extend .type--lg
+	color black
+	margin-bottom: 10px
+
+.input-row-wrap--half
+	f()
+	fw()
+	justify-content: space-between
+	.input-row
+		+below(640px)
+			width: 100%
+		width: 48%
+.contact-form-footer
+	f()
+	fw()
+	justify-content: space-between
+	.agree-row
+		+below(480px)
+			width: 100%
+			margin-bottom: 20px
+		width: 60%
+.contact-form-btn
+	+below(480px)
+		width: 100%
+		margin-left:initial
+	@extend .btn--md
+	@extend .btn--mark
+	margin-left: auto
+
+.blog
+	+below(768px)
+		grid-template-columns: 1fr 1fr
+	+below(480px)
+		grid-template-columns: 1fr
+	display: grid
+	grid-gap 25px
+	grid-template-columns: repeat(3, 1fr)
+.blog-banner
+	+below(480px)
+		grid-column 1/2
+		padding: 50% 10%
+	bg-full()
+	br(8px)
+	overflow: hidden
+	grid-column 1/3
+	position: relative
+	padding: 30% 10%
+	.filter
+		position: absolute
+		top 0
+		left 0
+		width: 100%
+		height: 100%
+		background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.44) 100%);
+.blog-banner__title
+	+below(480px)
+		font-size: 20px
+		letter-spacing 1px
+	color white
+	@extend .type--xl
+	position: relative
+	margin-top: auto
+.blog-el
+	br(8px)
+	box-shadow 0 4px 8px rgba(0, 0, 0, 0.06)
+	border-radius 8px
+	background-color #ffffff
+.blog-el__img
+	bg-full()
+	padding: 30% 10%
+.blog-banner__content
+	+below(640px)
+		padding: 20px 15px
+	f()
+	line-height: 1.4
+	position: absolute
+	width: 100%
+	height: 100%
+	top 0
+	left 0
+	padding: 30px
+
+.blog-el__content
+	padding: 30px 25px 70px 25px
+.blog-el__date
+	@extend .type--sm
+	letter-spacing 1.2px
+	margin-bottom: 10px
+.blog-el__title
+	@extend .type--lgx
+	color black
+	margin-bottom: 10px
+.blog-el__text
+	line-height: 1.4
+
+//content
+.content-wrap
+	+below(640px)
+		fw()
+	f()
+	justify-content: space-between
+	align-items: flex-start
+.content
+	+below(768px)
+		width calc(100% - 320px)
+	+below(640px)
+		width: 100%
+		margin-bottom: 20px
+	width: 65%
+	p
+		line-height: 1.4
+		color rgba(0, 0, 0, 0.7)
+		margin-bottom: 40px
+	ul
+		list-style-type: none
+		padding-left: 20px
+		margin-bottom: 40px
+		li
+			margin-bottom: 15px
+			position: relative
+			&:before
+				content ''
+				size 4px
+				round()
+				background: $red
+				position: absolute
+				left -20px
+				top 4px
+	.table
+		display: block
+		overflow-x: auto
+		table
+			min-width 600px
+
+.content-get-wrap
+	width: 30%
+
+.content-get-wrap
+	+below(640px)
+		width: 100%
+		margin-bottom: 30px
+	width: 275px
+.content-get
+	+below(640px)
+		padding: 30px 20px
+	flex(mid)
+	fl()
+	box-shadow 0 16px 24px rgba(0, 0, 0, 0.06)
+	border-radius 8px
+	border: 1px solid #ebebeb;
+	padding: 40px
+.content-get__title
+	@extend .type--lg
+	text-align: center
+	margin-bottom: 20px
+.content-get__text
+	+below(640px)
+		margin-bottom: 30px
+	margin-bottom: 50px
+	text-align: center
+	opacity 0.7
+	line-height: 1.4
+.content-get__btn
+	+below(480px)
+		width: 100%
+	@extend .btn--md
+	@extend .btn--mark
+.content-img
+	margin-bottom: 40px
+.mark-box
+	+below(640px)
+		padding: 30px 20px
+	br(8px)
+	@extend .type--lg
+	padding: 40px
+	background: #ebebf2
+	line-height: 1.4
+	color black
+	margin-bottom: 40px
+//content===end
+
+.share-title
+	@extend .type--lg
+	margin-bottom: 20px
+
+.soc-row
+	margin-bottom: 40px
+	f()
+.soc-row__el
+	.icon
+		size 40px
+		fill $dark

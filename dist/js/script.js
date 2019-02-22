@@ -1,5 +1,21 @@
 $(document).ready(function () {
 
+	//stars
+	$('.get-rating .star-row__el').hover(function () {
+		if (!$(this).parent().hasClass('fix-rating')) {
+			$('.get-rating .star-row__el').removeClass('star--active');
+			$(this).addClass('star--active');
+			$(this).prevAll('.star-row__el').addClass('star--active')
+		}
+	});
+	$('.get-rating .star-row__el').click(function () {
+		$(this).parent().toggleClass('fix-rating');
+		$(this).addClass('star--active');
+		$(this).prevAll('.star-row__el').addClass('star--active')
+	});
+	//stars==end
+
+
 	//main slider
 	$('.main-slider').slick({
   	slidesToShow: 1,
@@ -101,6 +117,42 @@ $(document).ready(function () {
 		$('body').addClass('body--fix');
 	}
 
+	//mobile menu
+		//Фиксируем скрол
+		$('.head-toggle--open').click(function(){
+			$('body').css({
+				overflow: '',
+				position: '',
+				top: ''
+			})
+		});
+
+		$('.head-toggle').click(function(event){
+			console.log('clc');
+			event.stopPropagation();
+			$(this).toggleClass('head-toggle--open');
+			$('.slide-menu').toggleClass('slide-menu--open');
+			$('body').toggleClass('body-fix')
+		});
+
+		$('.slide-menu').on("click", function (event) {
+			event.stopPropagation();
+		});
+
+		var closeSlideMenu = function(){
+				$('.head-toggle').removeClass('head-toggle--open');
+				$('.slide-menu').removeClass('slide-menu--open');
+				$('body').removeClass('body-fix');
+				console.log('close slide menu');
+		};
+		$(document).on("click", function () {
+				closeSlideMenu();
+		});
+		$('.slide-menu-cont .header-auth__enter').click(function(){
+			closeSlideMenu();
+		});
+		//mobile menu===end
+
 	var onLoadWGT = function(){
 		// + - card config
 		$('.item-footer__get-btn').click(function(){
@@ -144,6 +196,8 @@ $(document).ready(function () {
 			$(this).attr('placeholder', $label.substring(0, $label.length - 1));
 		});
 		//add placeholder===end
+
+
 	};
 	//============ WIDGET ==============
 	
@@ -171,19 +225,25 @@ $(document).ready(function () {
 			}
 		};
 		jStoreApp.user.on('change:authorized change:wallets', checkAuth);
+
 		checkAuth();
 
 		$('.loader').remove();
 		$('body').removeClass('body--fix');
+		//toggle mobile menu
+		$('.slide-menu__title').click(function(){
+			$(this).toggleClass('slide-menu__title--active');
+			$('.slide-menu__list .lsp-block-menu-tree').slideToggle();
+		});
+		//toggle mobile menu===end
 
 		onLoadWGT();
-
-
 	}]);
 
 	//change url
 	jStoreEvents.push(['pageChanged', null, function(data){
 		onLoadWGT();
+		closeSlideMenu();
 		$('body').removeClass('cart-open');
 		$('.modal-layer').removeClass('modal-layer-show');
 		
@@ -192,9 +252,11 @@ $(document).ready(function () {
 			$(window).scrollTop(modalState.scrollPos);
 			$('.main-slider').hide();
 			$('.page').addClass('page--white');
+			$('.container').addClass('container--order');
 		}else{
 			$('.main-slider').show();
 			$('.page').removeClass('page--white');
+			$('.container').removeClass('container--order');
 		}
 	}]);
 

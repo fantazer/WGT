@@ -1,0 +1,30 @@
+include block_html/_style.pug
+include block_html/_include.pug
+
++header()
+
+.loader
+	img(src="img/loader.svg", alt="")
+
+.page
+	.main-cont
+		.bread
+			-
+				var items = ['Главная','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей'];
+			each item in items
+				a(href="#").bread__el #{item}
+		.section-title Вакансии
+
+		.vacancy
+			- for (var j=0;j<7;j++)
+				.vacancy__el
+					.vacancy__el-title Повар-универсал
+					.vacancy__el-text График сменный, вечерний развоз и питание за счет предприятия. Тюменская прописка и опыт работы обязательны
+					.vacancy__el-footer
+						.vacancy__el-val от 25000 р
+						a(href="#").vacancy__el-get заявка
+
++footer()
++wgt()
+
+include ./block_html/_script.pug

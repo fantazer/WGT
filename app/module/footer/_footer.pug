@@ -33,7 +33,7 @@ mixin footer()
 							];
 					each item in items
 						a(href="#").footer-menu__el #{item}
-				.footer-contact
+				.footer-contact.footer-contact--mail
 					a(href="mailto:Manager@Jstore.ru").footer-mail Manager@Jstore.ru
 					.soc-row
 						-
@@ -41,7 +41,7 @@ mixin footer()
 						each item in items
 							a(href="#").soc-row__el
 								+icon(item,"icon")
-				.footer-contact
+				.footer-contact.footer-contact--phone
 					a(href="tel:8 800 5353 555").footer-tel 8 800 5353 555
 					.footer-call Звонок бесплатный
 		.footer-bottom-wrap

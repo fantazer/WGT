@@ -1,0 +1,57 @@
+include block_html/_style.pug
+include block_html/_include.pug
+
++header()
+
+.loader
+	img(src="img/loader.svg", alt="")
+
+.page
+	.main-cont
+		.bread
+			-
+				var items = ['Главная','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей','Пиццы','Гавайская с курицей'];
+			each item in items
+				a(href="#").bread__el #{item}
+		.section-title Оставить отзыв
+
+		.review-item
+			.get-rating
+				.get-rating-text Ваша оценка
+				.star-row-wrap
+					.star-row
+						- for (var i=1;i<6;i++)
+							.star-row__el
+								+icon("star","icon")
+			form(action="javascript:void(null);")
+				.review-item-row
+					.review-item-name Ваше имя
+					.input-row
+						input(type="text" name="name" placeholder="Ваше имя").input
+				.review-item-row
+					.review-item-name Телефон
+					.input-row
+						input(type="text" name="phone" placeholder="Телефон").input
+				.review-item-row
+					.review-item-name Заголовок
+					.input-row
+						input(type="text" name="phone" placeholder="Например: все очень круто").input
+				.review-item-row
+					.review-item-name Текст отзыва
+					.input-row
+						textarea(name="info", cols="30", rows="8" placeholder="Сообщение").input
+				.review-item-row
+					.agree-row
+						.check-el
+							label.style-label.style-label--checkbox
+								input(type="checkbox" name="agree").sytle-input
+								.sytle-input-element
+									+icon("checked","icon-check")
+								.sytle-input-text=text
+						.agree-row__text Согласен с
+							a(href="#") условиями обработки персональных данных
+					input(type="submit" value="отправить").review-item-btn
++footer()
++wgt()
+
+include ./block_html/_script.pug
