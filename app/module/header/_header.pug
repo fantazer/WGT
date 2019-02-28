@@ -4,7 +4,15 @@ mixin header()
 		.header-top-wrap
 			.main-cont
 				.header-top
-					.town-list Санкт-Петербург
+					.town-list
+						.town-list__el Санкт-Петербург
+						span
+							+icon("caret-down","icon")
+						.town-list-drop
+							a(href="#").town-list-drop__el Москва
+							a(href="#").town-list-drop__el Краснодар
+							a(href="#").town-list-drop__el Волгоград
+
 					.header-top-menu
 						-
 							var items = [
@@ -27,7 +35,7 @@ mixin header()
 		.main-cont
 			.header-info
 
-				a(href="#").header-logo
+				a(href="/").header-logo
 					img(src="img/logo.svg", alt="")
 				.header-search
 					form(action="#").header-search__form

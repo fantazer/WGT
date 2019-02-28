@@ -17,7 +17,8 @@ body
 	color $main-text-color
 	line-height 1.2
 	letter-spacing 0.01em
-
+	position: relative !important
+	top 0!important
 .main-cont
 	center(1200px,10px)
 
@@ -35,8 +36,42 @@ body
 .header-top
 	flex(between)
 .town-list
+	f()
 	color rgba(255, 255, 255, 0.7)
-	padding: 15px 0
+	padding: 15px 20px
+	position: relative
+	z-index 10
+	&:hover
+		box-shadow 0 8px 16px rgba(0, 0, 0, 0.16)
+		background-color #ffffff
+		color black
+		.icon
+			fill black
+			transform rotate(180deg)
+		.town-list-drop
+			display: block
+	.icon
+		size 8px
+		fill white
+		margin-left: 10px
+.town-list-drop
+	border-radius 0 0 8px 8px
+	position: absolute
+	top 100%
+	left 0
+	background: white
+	width: 100%
+	box-shadow 0 8px 16px rgba(0, 0, 0, 0.16)
+	overflow: hidden
+	display: none
+	padding-bottom: 10px
+.town-list-drop__el
+	display: block
+	padding: 15px 20px
+	background: white
+	tr(all)
+	&:hover
+		color $red
 .header-top-menu
 	width: 50%
 	flex(between)
@@ -588,6 +623,7 @@ input.item-count__el
 .footer-logo
 	width: 100px
 	margin-bottom: 10px
+	display: inline-block
 .footer-copy
 	opacity: .7
 .footer-menu
@@ -696,6 +732,7 @@ input.item-count__el
 .book-row__value
 	display table-cell
 	color black
+	white-space nowrap
 .item-card-weight
 	display: inline-block
 	margin-left: 5px
@@ -1552,10 +1589,117 @@ input.item-count__el
 	@extend .type--lg
 	margin-bottom: 20px
 
-.soc-row
-	margin-bottom: 40px
+.share
+	.soc-row
+		margin-bottom: 40px
+		f()
+	.soc-row__el
+		.icon
+			size 40px
+			fill $dark
+
+.cart-get--empty
+	background: gray
+	pointer-events none!important
+	opacity: .3
+
+.cart-inner-wrap
+	position: relative
 	f()
-.soc-row__el
-	.icon
-		size 40px
-		fill $dark
+	border-radius 10px 0 10px 10px
+	overflow: hidden
+
+.cart-inner-wrap__add
+	+below(640px)
+		display: none
+	width: 50%
+	border-radius 10px 0 0 10px
+	padding: 20px
+	background: #ededed
+	.lsp-block-item
+		background: #ededed
+		margin-bottom: 10px
+		overflow: hidden
+	.item
+		border-radius 0!important
+		background: #ededed
+		&:last-child
+			margin-bottom: 0
+	.item__img
+		display: none
+	.item-descr
+		display: none
+	.item-info
+		padding: 20px
+	.item-title
+		text-align: left
+		font-size: 16px
+		text-transform: none
+		margin-bottom: 10px
+		padding: 0
+	.item-description
+		text-transform: none
+		text-align: left
+		font-size: 10px
+		opacity: .6
+		margin-bottom: 0
+	.item-cont
+		border-bottom 1px solid $border-color
+	.item-footer__price
+		padding: 10px
+	.item-param
+		display: none
+.cart-inner-wrap__info
+	+below(640px)
+		width: 100%
+	width: 50%
+
+.cart-inner-wrap__add-title
+	text-align: left
+	margin 20px 0
+	font-weight: 700
+	font-size: 16px
+
+.cart-favorite
+	max-height 550px
+	overflow-y auto
+	padding-right: 10px
+	&::-webkit-scrollbar
+		-webkit-appearance: none
+		width: 4px
+	&::-webkit-scrollbar-thumb
+		border-radius: 4px
+		background-color: white
+
+.item--clone
+	.item-tag
+		display: none !important
+	.item-check
+		display: none !important
+	width: 300px
+	max-height 500px
+
+@keyframes shake
+	from,11.1%,to
+		transform: translate3d(0, 0, 0)
+	22.2%
+		transform: skewX(-12.5deg) skewY(-12.5deg)
+	33.3%
+		transform: skewX(6.25deg) skewY(6.25deg)
+	44.4%
+		transform: skewX(-3.125deg) skewY(-3.125deg)
+	55.5%
+		transform: skewX(1.5625deg) skewY(1.5625deg)
+	66.6%
+		transform: skewX(-0.78125deg) skewY(-0.78125deg)
+	77.7%
+		transform: skewX(0.390625deg) skewY(0.390625deg)
+	88.8%
+		transform: skewX(-0.1953125deg) skewY(-0.1953125deg)
+
+
+.shake
+	animation: shake 1.2s cubic-bezier(.36,.07,.19,.97) both
+	transform: translate3d(0, 0, 0)
+	backface-visibility: hidden
+	perspective: 1000px

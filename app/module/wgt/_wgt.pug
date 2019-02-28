@@ -8,25 +8,30 @@ mixin wgt()
 		| Корзина
 		<% } %>
 		.cart-inner
-			a.close-cart(href='#', onclick="$('body').toggleClass('cart-open');")
-			<% if(totalItems){ %>
-			.cart-list.lsp-cart-items-list(data-template='top-cart-item-template')
-			.cart-summary
-				.cart-total
-					span.jstore-js-cart-total-value <%= totalCost %>
-					|  Р.
-				<% if(totalCost>=495){ %>
-					a(href='#!/order').cart-get Оформить
-				<% }else{ %>
-					a(href='/').cart-get.cart-get--empty Оформить
-				<% } %>
-			.cart-min Минимальная сумма заказа - 495руб.
-			<% } else { %>
-				.cart-empty
-					.cart-empty__icon
-						+icon("cart--color","icon")
-					.cart-empty__text Пока пусто
-			<% } %>
+			.cart-inner-wrap
+				.cart-inner-wrap__add
+					.cart-inner-wrap__add-title Рекомендуем
+					#first.jstore-block.lsp-block-items-filter.jstore-slider.cart-favorite(data-page="index")
+				.cart-inner-wrap__info
+					a.close-cart(href='#', onclick="$('body').toggleClass('cart-open');")
+					<% if(totalItems){ %>
+					.cart-list.lsp-cart-items-list(data-template='top-cart-item-template')
+					.cart-summary
+						.cart-total
+							span.jstore-js-cart-total-value <%= totalCost %>
+							|  Р.
+						<% if(totalCost>=495){ %>
+							a(href='#!/order').cart-get Оформить
+						<% }else{ %>
+							a(href='/').cart-get.cart-get--empty Оформить
+						<% } %>
+					.cart-min Минимальная сумма заказа - 495руб.
+					<% } else { %>
+						.cart-empty
+							.cart-empty__icon
+								+icon("cart--color","icon")
+							.cart-empty__text Пока пусто
+					<% } %>
 
 
 	//корзина елемент списка
@@ -39,9 +44,9 @@ mixin wgt()
 					span.cart-item__name--add <%= typesTail %>
 			.cart-item__footer
 				.cart-item__incr
-					input.lsp-button-minus.lsp-button-minus.lsp-js-item-minus.minus(type='button', value='-', onclick='change_count();')
+					input.lsp-button-minus.lsp-button-minus.lsp-js-item-minus.minus(type='button', value='-')
 					input.cart-item__incr-total.lsp-block-cart-item-amount-c-count(name='count', value='<%= amount %>')
-					input.lsp-button-plus.lsp-js-item-plus.plus(type='button', value='+', onclick='change_count();')
+					input.lsp-button-plus.lsp-js-item-plus.plus(type='button', value='+', )
 
 				.cart-item__price <%= price %> Р.
 
@@ -55,25 +60,30 @@ mixin wgt()
 			|  р
 		<% } %>
 		.cart-inner
-			a.close-cart(href='#', onclick="$('body').toggleClass('cart-open');")
-			<% if(totalItems){ %>
-			.cart-list.lsp-cart-items-list(data-template='top-cart-item-template')
-			.cart-summary
-				.cart-total
-					span.jstore-js-cart-total-value <%= totalCost %>
-					|  Р.
-				<% if(totalCost>=495){ %>
-				a(href='#!/order' ).cart-get Оформить
-				<% }else{ %>
-				a(href='/').cart-get.cart-get--empty Оформить
-				<% } %>
-			.cart-min Минимальная сумма заказа - 495руб.
-			<% } else { %>
-			.cart-empty
-				.cart-empty__icon
-					+icon("cart--color","icon")
-				.cart-empty__text Пока пусто
-			<% } %>
+			.cart-inner-wrap
+				.cart-inner-wrap__add
+					.cart-inner-wrap__add-title Рекомендуем
+					#first.jstore-block.lsp-block-items-filter.jstore-slider.cart-favorite(data-page="index")
+				.cart-inner-wrap__info
+					a.close-cart(href='#', onclick="$('body').toggleClass('cart-open');")
+					<% if(totalItems){ %>
+					.cart-list.lsp-cart-items-list(data-template='top-cart-item-template')
+					.cart-summary
+						.cart-total
+							span.jstore-js-cart-total-value <%= totalCost %>
+							|  Р.
+						<% if(totalCost>=495){ %>
+						a(href='#!/order').cart-get Оформить
+						<% }else{ %>
+						a(href='/').cart-get.cart-get--empty Оформить
+						<% } %>
+					.cart-min Минимальная сумма заказа - 495руб.
+					<% } else { %>
+					.cart-empty
+						.cart-empty__icon
+							+icon("cart--color","icon")
+						.cart-empty__text Пока пусто
+					<% } %>
 
 	//корзина карточка товара
 	script(type="text/html" id="order-cart-order-template")

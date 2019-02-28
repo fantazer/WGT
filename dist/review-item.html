@@ -27,7 +27,19 @@
         <div class="header-top-wrap">
             <div class="main-cont">
                 <div class="header-top">
-                    <div class="town-list">Санкт-Петербург</div>
+                    <div class="town-list">
+                        <div class="town-list__el">Санкт-Петербург</div>
+                        <span>
+                            <svg class="icon">
+                                <use xlink:href="#caret-down"></use>
+                            </svg>
+                        </span>
+                        <div class="town-list-drop">
+                            <a class="town-list-drop__el" href="#">Москва</a>
+                            <a class="town-list-drop__el" href="#">Краснодар</a>
+                            <a class="town-list-drop__el" href="#">Волгоград</a>
+                        </div>
+                    </div>
                     <div class="header-top-menu">
                         <a class="header-top-menu__el" href="#">Доставка и оплата</a>
                         <a class="header-top-menu__el" href="#">Новости</a>
@@ -65,7 +77,7 @@
         </div>
         <div class="main-cont">
             <div class="header-info">
-                <a class="header-logo" href="#">
+                <a class="header-logo" href="/">
                     <img src="img/logo.svg" alt="" />
                 </a>
                 <div class="header-search">
@@ -285,9 +297,9 @@
             </div>
             <div class="footer-info">
                 <div class="footer-info__about">
-                    <div class="footer-logo">
+                    <a class="footer-logo" href="/">
                         <img src="img/logo.svg" alt="" />
-                    </div>
+                    </a>
                     <div class="footer-copy">Jstore © 2018</div>
                 </div>
                 <div class="footer-menu">
@@ -412,20 +424,28 @@
     <!--корзина-->
     <script type="text/html" id="top-cart-header-template">
         <% if(totalItems){ %><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р (<span class="jstore-js-cart-total-count"><%= totalItems %></span>ШТ.)</span><% } else { %>Корзина<% } %>
-        	<div class="cart-inner"><a class="close-cart" href="#" onclick="$('body').toggleClass('cart-open');"></a><% if(totalItems){ %>
-        		<div class="cart-list lsp-cart-items-list" data-template="top-cart-item-template"></div>
-        		<div class="cart-summary">
-        			<div class="cart-total"><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р.</div><% if(totalCost>=495){ %><a class="cart-get" href="#!/order">Оформить</a><% }else{ %><a class="cart-get cart-get--empty" href="/">Оформить</a><% } %>
-        		</div>
-        		<div class="cart-min">Минимальная сумма заказа - 495руб.</div><% } else { %>
-        		<div class="cart-empty">
-        			<div class="cart-empty__icon">
-        				<svg class="icon">
-        					<use xlink:href="#cart--color"></use>
-        				</svg>
+        	<div class="cart-inner">
+        		<div class="cart-inner-wrap">
+        			<div class="cart-inner-wrap__add">
+        				<div class="cart-inner-wrap__add-title">Рекомендуем</div>
+        				<div class="jstore-block lsp-block-items-filter jstore-slider cart-favorite" id="first" data-page="index"></div>
         			</div>
-        			<div class="cart-empty__text">Пока пусто</div>
-        		</div><% } %>
+        			<div class="cart-inner-wrap__info"><a class="close-cart" href="#" onclick="$('body').toggleClass('cart-open');"></a><% if(totalItems){ %>
+        				<div class="cart-list lsp-cart-items-list" data-template="top-cart-item-template"></div>
+        				<div class="cart-summary">
+        					<div class="cart-total"><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р.</div><% if(totalCost>=495){ %><a class="cart-get" href="#!/order">Оформить</a><% }else{ %><a class="cart-get cart-get--empty" href="/">Оформить</a><% } %>
+        				</div>
+        				<div class="cart-min">Минимальная сумма заказа - 495руб.</div><% } else { %>
+        				<div class="cart-empty">
+        					<div class="cart-empty__icon">
+        						<svg class="icon">
+        							<use xlink:href="#cart--color"></use>
+        						</svg>
+        					</div>
+        					<div class="cart-empty__text">Пока пусто</div>
+        				</div><% } %>
+        			</div>
+        		</div>
         	</div>
     </script>
     <!--корзина елемент списка-->
@@ -437,9 +457,9 @@
         		</div>
         		<div class="cart-item__footer">
         			<div class="cart-item__incr">
-        				<input class="lsp-button-minus lsp-button-minus lsp-js-item-minus minus" type="button" value="-" onclick="change_count();"/>
+        				<input class="lsp-button-minus lsp-button-minus lsp-js-item-minus minus" type="button" value="-"/>
         				<input class="cart-item__incr-total lsp-block-cart-item-amount-c-count" name="count" value="&lt;%= amount %&gt;"/>
-        				<input class="lsp-button-plus lsp-js-item-plus plus" type="button" value="+" onclick="change_count();"/>
+        				<input class="lsp-button-plus lsp-js-item-plus plus" type="button" value="+"/>
         			</div>
         			<div class="cart-item__price"><%= price %> Р.</div>
         		</div>
@@ -448,20 +468,28 @@
     <!--корзина в fix-->
     <script type="text/html" id="top-cart-header-template-cart">
         <% if(totalItems > 0){ %><span class="jstore-js-cart-total-value"><%= totalCost%></span> р<% } %>
-        	<div class="cart-inner"><a class="close-cart" href="#" onclick="$('body').toggleClass('cart-open');"></a><% if(totalItems){ %>
-        		<div class="cart-list lsp-cart-items-list" data-template="top-cart-item-template"></div>
-        		<div class="cart-summary">
-        			<div class="cart-total"><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р.</div><% if(totalCost>=495){ %><a class="cart-get" href="#!/order">Оформить</a><% }else{ %><a class="cart-get cart-get--empty" href="/">Оформить</a><% } %>
-        		</div>
-        		<div class="cart-min">Минимальная сумма заказа - 495руб.</div><% } else { %>
-        		<div class="cart-empty">
-        			<div class="cart-empty__icon">
-        				<svg class="icon">
-        					<use xlink:href="#cart--color"></use>
-        				</svg>
+        	<div class="cart-inner">
+        		<div class="cart-inner-wrap">
+        			<div class="cart-inner-wrap__add">
+        				<div class="cart-inner-wrap__add-title">Рекомендуем</div>
+        				<div class="jstore-block lsp-block-items-filter jstore-slider cart-favorite" id="first" data-page="index"></div>
         			</div>
-        			<div class="cart-empty__text">Пока пусто</div>
-        		</div><% } %>
+        			<div class="cart-inner-wrap__info"><a class="close-cart" href="#" onclick="$('body').toggleClass('cart-open');"></a><% if(totalItems){ %>
+        				<div class="cart-list lsp-cart-items-list" data-template="top-cart-item-template"></div>
+        				<div class="cart-summary">
+        					<div class="cart-total"><span class="jstore-js-cart-total-value"><%= totalCost %></span> Р.</div><% if(totalCost>=495){ %><a class="cart-get" href="#!/order">Оформить</a><% }else{ %><a class="cart-get cart-get--empty" href="/">Оформить</a><% } %>
+        				</div>
+        				<div class="cart-min">Минимальная сумма заказа - 495руб.</div><% } else { %>
+        				<div class="cart-empty">
+        					<div class="cart-empty__icon">
+        						<svg class="icon">
+        							<use xlink:href="#cart--color"></use>
+        						</svg>
+        					</div>
+        					<div class="cart-empty__text">Пока пусто</div>
+        				</div><% } %>
+        			</div>
+        		</div>
         	</div>
     </script>
     <!--корзина карточка товара-->

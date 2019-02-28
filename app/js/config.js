@@ -2,6 +2,7 @@ window.jStoreConfig = {
     "restaurant" : "3f46ac68-54f4-4ea5-84c1-b7db224a544e",
     //"restaurant" : "a8af42fb-ac27-11e8-80d2-d8d385655247",
     //"restaurant" : "f0a741f9-b494-11e7-80ca-d8d385655247",
+    //"restaurant" : "44e4dda6-02c4-11e5-80c1-d8d385655247",
 			'loc': {
 				'Auth': 'Вход',
 				'energy_sum': 'Состав',
@@ -12,6 +13,15 @@ window.jStoreConfig = {
 				'Order_comment': 'Комментарий к заказу, аккаунт ВК или Instagram, номер купона'
 			},
 			'templates': [
+				{
+				 'type': 'itemsFilter#first',
+				 'class': 'product-items',
+				 'template' : '#cart-favorites',
+				 'properties': {
+				 'sliderUse': false,
+				 'tags': ['novinka']
+				 }
+				},
 				{
 					'type': 'itemPopUp',
 					'template': '#custom-popup'
