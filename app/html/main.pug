@@ -21,12 +21,14 @@ include block_html/_include.pug
 	.main-cont
 		//toggle class .items--three .items--four .items--five
 		.container
-
 			.item-container.items--four
 				#jstore-css
 					#lsp-block-content.lsp-block-content
 			#lsp-block-cart.lsp-block-cart.order-container.cart-order__item(data-template="order-cart-order-template"  data-page="order" )
-				//#lsp-block-tree.lsp-block-menu-tree
+				.cart-summary
+					.cart-total
+						span.jstore-js-cart-total-value <%= totalCost %>
+						|  Р.
 
 +footer()
 +wgt()
