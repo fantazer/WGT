@@ -18,6 +18,7 @@ window.jStoreConfig = {
 				 'class': 'product-items',
 				 'template' : '#cart-favorites',
 				 'properties': {
+
 				 'sliderUse': false,
 				 'tags': ['novinka']
 				 }

@@ -920,7 +920,7 @@ a:visiter {
 /* block footer*/
 /*block footer end */
 #lsp-block-popup {
-  position: fixed;
+  position: fixed !important;
   width: 100%;
   height: 100vh;
   top: 0;
